@@ -67,13 +67,14 @@ const Home = () => {
 
     // get courses data
     const [CatalogPageData, setCatalogPageData] = useState(null);
-    const categoryID = "6506c9dff191d7ffdb4a3fe2" // hard coded
+    const categoryID = "67d7f4e056d7b4e455c7be14" // hard coded
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchCatalogPageData = async () => {
 
             const result = await getCatalogPageData(categoryID, dispatch);
+            
             setCatalogPageData(result);
             // console.log("page data ==== ",CatalogPageData);
         }

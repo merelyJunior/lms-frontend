@@ -55,6 +55,9 @@ export default function CourseInformationForm() {
   const isFormUpdated = () => {
     const currentValues = getValues()
     // console.log("changes after editing form values:", currentValues)
+    
+  console.log(currentValues.courseCategory._id);
+  console.log(course.category._id);
     if (
       currentValues.courseTitle !== course.courseName ||
       currentValues.courseShortDesc !== course.courseDescription ||
@@ -68,6 +71,7 @@ export default function CourseInformationForm() {
     }
     return false
   }
+  
 
   //   handle next button click
   const onSubmit = async (data) => {

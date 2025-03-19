@@ -12,10 +12,12 @@ export const getCatalogPageData = async (categoryId) => {
     const response = await apiConnector("POST", catalogData.CATALOGPAGEDATA_API,
       { categoryId: categoryId, });
 
+        console.log(response.data);
+        
     if (!response?.data?.success)
       throw new Error("Could not Fetch Category page data");
 
-    console.log("CATALOG PAGE DATA API RESPONSE............", response)
+    // console.log("CATALOG PAGE DATA API RESPONSE............", response)
     result = response?.data?.data;
 
   }
