@@ -234,9 +234,11 @@ const VideoDetails = () => {
           )}
         </Player>
       )}
-
-      <h1 className="mt-4 text-3xl font-semibold">{videoData?.title}</h1>
-      <p className="pt-2 pb-6">{videoData?.description}</p>
+      <div className="rounded-2xl p-8 px-3 sm:px-12 bg-blue-500">
+        <h1 className="mt-4 text-3xl font-semibold">{videoData?.title}</h1>
+        <p className="pt-2 pb-6">{videoData?.description}</p>
+      </div>
+      
     </div>
   )
 }

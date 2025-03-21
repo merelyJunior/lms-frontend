@@ -9,7 +9,7 @@ const PageNotFound = () => {
           <div>
             <div className="text-center">
               <div className="h-[400px] bg-center bg-[url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif)] ">
-                <h1 className="text-center text-6xl font-extrabold text-black ">404</h1>
+                <h1 className="text-center text-6xl font-extrabold text-white ">404</h1>
               </div>
 
               <div className="-mt-12 ">

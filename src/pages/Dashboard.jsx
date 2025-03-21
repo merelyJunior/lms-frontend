@@ -23,10 +23,10 @@ const Dashboard = () => {
     }, [])
 
     return (
-        <div className='relative flex min-h-[calc(100vh-3.5rem)] '>
+        <div className='relative flex min-h-[calc(100vh-3.5rem)] bg-blue-800'>
             <Sidebar />
 
-            <div className='h-[calc(100vh-3.5rem)] overflow-auto w-full'>
+            <div className='h-[calc(100vh-3.5rem)] overflow-auto w-full bg-blue-800'>
                 <div className=' p-10 '>
                     <Outlet />
                 </div>

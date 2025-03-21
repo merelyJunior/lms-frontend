@@ -28,10 +28,10 @@ export default function RenderCartCourses() {
             />
 
             <div className="flex flex-col space-y-1">
-              <p className="text-lg font-medium text-richblack-5">
+              <p className="text-lg font-medium text-white">
                 {course?.courseName}
               </p>
-              <p className="text-sm text-richblack-300">
+              <p className="text-sm ">
                 {course?.category?.name}
               </p>
               <div className="flex items-center gap-2">
@@ -45,7 +45,7 @@ export default function RenderCartCourses() {
                   emptyIcon={<FaStar />}
                   fullIcon={<FaStar />}
                 />
-                <span className="text-richblack-400">
+                <span className="">
                   {course?.ratingAndReviews?.length} Ratings
                 </span>
               </div>
@@ -55,13 +55,13 @@ export default function RenderCartCourses() {
           <div className="flex flex-col items-end space-y-2">
             <button
               onClick={() => dispatch(removeFromCart(course._id))}
-              className="flex items-center gap-x-1 rounded-md border border-richblack-600 bg-richblack-700 py-3 px-[12px] text-pink-200"
+              className="flex items-center gap-x-1 rounded-md border border-richblack-600  py-3 px-[12px] text-pink-200"
             >
               <RiDeleteBin6Line />
               <span>Remove</span>
             </button>
             <p className="mb-6 text-3xl font-medium text-yellow-100">
-              {course?.price} $$$
+              {course?.price} $
             </p>
           </div>
         </div>

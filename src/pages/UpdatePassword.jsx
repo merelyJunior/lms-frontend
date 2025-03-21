@@ -41,22 +41,22 @@ function UpdatePassword() {
   }
 
   return (
-    <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+    <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center bg-blue-800">
       {loading ? (
         <div className="spinner"></div>
       ) : (
         <div className="max-w-[500px] p-4 lg:p-8">
-          <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">
+          <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-white">
             Choose new password
           </h1>
 
-          <p className="my-4 text-[1.125rem] leading-[1.625rem] text-richblack-100">
+          <p className="my-4 text-[1.125rem] leading-[1.625rem] ">
             Almost done. Enter your new password and you're all set.
           </p>
 
           <form onSubmit={handleOnSubmit}>
             <label className="relative">
-              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
                 New Password <sup className="text-pink-200">*</sup>
               </p>
               <input
@@ -69,7 +69,7 @@ function UpdatePassword() {
                 style={{
                   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}
-                className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 "
+                className="w-full rounded-[0.5rem]  p-[12px] text-black "
               />
               <span
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -84,7 +84,7 @@ function UpdatePassword() {
             </label>
 
             <label className="relative mt-3 block">
-              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+              <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
                 Confirm New Password <sup className="text-pink-200">*</sup>
               </p>
               <input
@@ -97,7 +97,7 @@ function UpdatePassword() {
                 style={{
                   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}
-                className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 "
+                className="w-full rounded-[0.5rem]  p-[12px] text-black "
               />
               <span
                 onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -113,7 +113,7 @@ function UpdatePassword() {
 
             <button
               type="submit"
-              className="mt-6 w-full rounded-[8px] bg-yellow-50 py-[12px] px-[12px] font-medium text-richblack-900"
+              className="mt-6 w-full rounded-[8px] bg-yellow-50 text-black py-[12px] px-[12px] font-medium "
             >
               Reset Password
             </button>
@@ -121,7 +121,7 @@ function UpdatePassword() {
 
           <div className="mt-6 flex items-center justify-between">
             <Link to="/login">
-              <p className="flex items-center gap-x-2 text-richblack-5">
+              <p className="flex items-center gap-x-2 text-white">
                 <BiArrowBack /> Back To Login
               </p>
             </Link>

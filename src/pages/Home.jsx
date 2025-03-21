@@ -105,10 +105,10 @@ const Home = () => {
                 <div className='relative h-[450px] md:h-[550px] justify-center mx-auto flex flex-col w-11/12 max-w-maxContent items-center text-white '>
 
                     <Link to={"/signup"}>
-                        <div className='z-0 group p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200
+                        <div className='z-0 group p-1 mx-auto rounded-full  font-bold 
                                         transition-all duration-200 hover:scale-95 w-fit'>
                             <div className='flex flex-row items-center gap-2 rounded-full px-10 py-[5px]
-                              transition-all duration-200 group-hover:bg-richblack-900'>
+                              transition-all duration-200 group-hover:'>
                                 <p>Become an Instructor</p>
                                 <FaArrowRight />
                             </div>
@@ -132,7 +132,7 @@ const Home = () => {
                         initial='hidden'
                         whileInView={'show'}
                         viewport={{ once: false, amount: 0.1 }}
-                        className=' mt-4 w-[90%] text-center text-base lg:text-lg font-bold text-richblack-300'
+                        className=' mt-4 w-[90%] text-center text-base lg:text-lg font-bold '
                     >
                         With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.
                     </motion.div>
@@ -235,7 +235,7 @@ const Home = () => {
                 </div>
 
                 {/*Section 2  */}
-                <div className='bg-pure-greys-5 text-richblack-700 '>
+                <div className='bg-pure-greys-5  '>
                     <div className='homepage_bg h-[310px]'>
                         <div className='w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto'>
                             <div className='h-[150px]'></div>
@@ -286,7 +286,7 @@ const Home = () => {
 
 
                 {/*Section 3 */}
-                <div className='mt-14 w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white'>
+                <div className='mt-14 w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter  text-white'>
                     <InstructorSection />
 
                     {/* Reviws from Other Learner */}
@@ -297,7 +297,7 @@ const Home = () => {
                 </div>
 
                 {/*Footer */}
-                <Footer />
+                {/* <Footer /> */}
             </div >
         </React.Fragment>
     )

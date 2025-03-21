@@ -15,7 +15,7 @@ import IconBtn from "../../common/IconBtn";
 const LoadingSkeleton = () => {
   return (<div className="flex p-5 flex-col gap-6 border-b border-2 border-b-richblack-500">
     <div className="flex flex-col sm:flex-row gap-5 items-center mt-7">
-      <p className='h-[150px] w-[150px] rounded-full skeleton'></p>
+      <p className='h-[75px] w-[75px] rounded-full mr-10skeleton'></p>
       <div className="flex flex-col gap-2 ">
         <p className='h-4 w-[160px] rounded-xl skeleton'></p>
         <p className='h-4 w-[270px] rounded-xl skeleton'></p>
@@ -58,21 +58,21 @@ function AllInstructors() {
   return (
     <div>
       <div className="mb-14 flex items-center justify-between text-white">
-        <h1 className="text-4xl font-medium text-richblack-5 font-boogaloo text-center sm:text-left">All Instructors Details</h1>
-
+        <h1 className="text-4xl font-medium text-white font-wadik text-center sm:text-left">All Instructors Details</h1>
+{/* 
         <IconBtn text="Add Instructor" onclick={() => navigate("")}>
           <VscAdd />
-        </IconBtn>
+        </IconBtn> */}
       </div>
 
-      <Table className="rounded-xl border-2 border-richblack-500 ">
+      <Table className="rounded-xl  ">
         <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-500 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
+          <Tr className="flex gap-x-10 rounded-t-md  px-6 py-2">
+            <Th className="flex-1 text-left text-sm font-medium uppercase ">
               Instructors : {instructorsCount}
             </Th>
 
-            <Th className=" ml-4 text-sm font-medium uppercase text-richblack-100">
+            <Th className=" ml-4 text-sm font-medium uppercase ">
               Status
             </Th>
           </Tr>
@@ -91,20 +91,20 @@ function AllInstructors() {
                 allInstructorDetails?.map((instructor) => (
                   <div
                     key={instructor._id}
-                    className='border-x border-2 border-richblack-500 '
+                    className='border border-gray '
                   >
-                    <Tr className="flex gap-x-10 px-6 py-8">
+                    <Tr className="flex gap-x-10 px-6 pt-8 pb-2 border-b border-gray">
                       <Td className="flex flex-1 gap-x-2">
                         <img
                           src={instructor.image}
                           alt="student"
-                          className="h-[150px] w-[150px] rounded-full "
+                          className="h-[75px] w-[75px] rounded-full mr-10"
                         />
                         <div className="flex flex-col justify-between">
-                          <p className="text-lg font-semibold text-richblack-5">
+                          <p className="text-lg font-semibold text-white">
                             <div className='text-sm font-normal'>
                               <p className='text-base font-bold capitalize'>{instructor.firstName + " " + instructor.lastName}</p>
-                              <p>{instructor.email}</p>
+                              <p className="italic mb-5">{instructor.email}</p>
 
                               <p>
                                 Gender:{" "}
@@ -128,29 +128,29 @@ function AllInstructors() {
                           </p>
                         </div>
                       </Td>
-                      <Td className="mr-[11.5%] text-sm font-medium text-richblack-100">
+                      <Td className="mr-[11.5%] text-sm font-medium ">
                         {instructor.active ? "Active" : "Inactive"}
                       </Td>
-                      <Td className="mr-[8%] text-sm font-medium text-richblack-100">
+                      <Td className="mr-[8%] text-sm font-medium ">
                         {instructor.approved ? "Approved" : "Not Approved"}
                       </Td>
                     </Tr>
 
 
                     {instructor.courses.length ? (
-                      <Tr className="flex gap-x-10 px-6 pb-5">
+                      <Tr className="flex gap-x-10 px-6 py-5">
                         <p className="text-yellow-50 ">Built Courses</p>
                         <div className='grid grid-cols-5 gap-y-5'>
                           {instructor.courses.map((course) => (
                             <div className="text-white text-sm" key={course._id}>
                               <p>{course.courseName}</p>
-                              <p className="text-sm font-normal">Price:{course.price}  $$$</p>
+                              <p className="text-sm font-normal">Price:{course.price}  $</p>
                             </div>
                           ))}
                         </div>
                       </Tr>)
                       :
-                      <div className="px-6 text-white mb-4">Not Purchased any course</div>
+                      <div className="px-6 my-4 text-sm text-gray">Not Purchased any course</div>
                     }
                   </div>
 

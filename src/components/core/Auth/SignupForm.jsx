@@ -95,7 +95,7 @@ function SignupForm() {
         <div className="flex gap-x-4">
           {/* First Name */}
           <label>
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
               First Name <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -108,13 +108,13 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none"
+              className="w-full rounded-[0.5rem]  p-[12px] text-black outline-none"
             />
           </label>
 
           {/* Last Name */}
           <label>
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
               Last Name <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -127,14 +127,14 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none"
+              className="w-full rounded-[0.5rem]  p-[12px] text-black outline-none"
             />
           </label>
         </div>
 
         {/* Email Address */}
         <label className="w-full">
-          <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+          <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
             Email Address <sup className="text-pink-200">*</sup>
           </p>
           <input
@@ -147,7 +147,7 @@ function SignupForm() {
             style={{
               boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
             }}
-            className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] text-richblack-5 outline-none"
+            className="w-full rounded-[0.5rem]  p-[12px] text-black outline-none"
           />
         </label>
 
@@ -155,7 +155,7 @@ function SignupForm() {
         <div className="flex gap-x-4">
           {/* Create Password */}
           <label className="relative">
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
               Create Password <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -168,7 +168,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-10 text-richblack-5 outline-none"
+              className="w-full rounded-[0.5rem]  p-[12px] pr-10 text-white outline-none"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
@@ -184,7 +184,7 @@ function SignupForm() {
 
           {/* Confirm Password  */}
           <label className="relative">
-            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
+            <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-white">
               Confirm Password <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -197,7 +197,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem] bg-richblack-800 p-[12px] pr-10 text-richblack-5 outline-none"
+              className="w-full rounded-[0.5rem]  p-[12px] pr-10 text-white outline-none"
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -215,7 +215,7 @@ function SignupForm() {
 
         <button
           type="submit"
-          className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
+          className="mt-6 rounded-[8px] bg-yellow-50 text-black py-[8px] px-[12px] font-medium "
         >
           Create Account
         </button>

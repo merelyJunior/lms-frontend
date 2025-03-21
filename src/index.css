@@ -8,6 +8,11 @@ html,
 body {
   overflow-x: hidden;
   scroll-behavior: smooth;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5{
+  color: #fff;
 }
 
 * {
@@ -75,25 +80,25 @@ body {
 
 
 .lable-style {
-  @apply text-[14px] text-richblack-5;
+  @apply text-[14px] text-white;
 }
 
 .form-style {
-  @apply rounded-lg bg-richblack-700 p-3 text-[16px] leading-[24px] text-richblack-5 shadow-[0_1px_0_0] shadow-white/30 placeholder:text-richblack-400 focus:outline-none;
+  @apply rounded-lg  p-3 text-[16px] leading-[24px] text-black shadow-[0_1px_0_0] shadow-white/30  focus:outline-none placeholder:text-black;
 }
 
 .section_heading {
-  @apply text-2xl font-bold text-richblack-5 lg:text-4xl;
+  @apply text-2xl font-bold text-white lg:text-4xl;
 }
 
 
 /* Buttons */
 .yellowButton {
-  @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900 hover:bg-black hover:text-yellow-50 duration-300;
+  @apply cursor-pointer rounded-md bg-yellow-50 text-black px-[20px] py-[8px] font-semibold  hover:bg-yellow-300 hover:text-yellow-25 duration-300;
 }
 
 .blackButton {
-  @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5 hover:bg-richblack-5 hover:text-richblack-800 duration-300;
+  @apply cursor-pointer rounded-md  px-[20px] py-[8px] font-semibold text-white   duration-300;
 }
 
 
@@ -134,7 +139,7 @@ body {
 /* used in Navbar */
 .top {
   /* background: rgba(0, 0, 0, 0.25); */
-  background: #222831a1;
+  background: #181a40;
   backdrop-filter: blur(3.5px);
   -webkit-backdrop-filter: blur(3.5px);
 }

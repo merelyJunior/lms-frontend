@@ -58,7 +58,7 @@ function Catalog() {
 
     if (loading) {
         return (
-            <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+            <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center bg-blue-800">
                 <Loading />
             </div>
         )
@@ -75,18 +75,18 @@ function Catalog() {
     return (
         <>
             {/* Hero Section */}
-            <div className=" box-content bg-richblack-800 px-4">
+            <div className=" box-content  px-4">
                 <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
-                    <p className="text-sm text-richblack-300">
+                    <p className="text-sm ">
                         {`Home / Catalog / `}
                         <span className="text-yellow-25">
                             {catalogPageData?.selectedCategory?.name}
                         </span>
                     </p>
-                    <p className="text-3xl text-richblack-5">
+                    <p className="text-3xl text-white">
                         {catalogPageData?.selectedCategory?.name}
                     </p>
-                    <p className="max-w-[870px] text-richblack-200">
+                    <p className="max-w-[870px] ">
                         {catalogPageData?.selectedCategory?.description}
                     </p>
                 </div>
@@ -99,7 +99,7 @@ function Catalog() {
                     <p
                         className={`px-4 py-2 ${active === 1
                             ? "border-b border-b-yellow-25 text-yellow-25"
-                            : "text-richblack-50"
+                            : "text-white0"
                             } cursor-pointer`}
                         onClick={() => setActive(1)}
                     >
@@ -108,7 +108,7 @@ function Catalog() {
                     <p
                         className={`px-4 py-2 ${active === 2
                             ? "border-b border-b-yellow-25 text-yellow-25"
-                            : "text-richblack-50"
+                            : "text-white0"
                             } cursor-pointer`}
                         onClick={() => setActive(2)}
                     >
@@ -148,7 +148,7 @@ function Catalog() {
                 </div>
             </div>
 
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

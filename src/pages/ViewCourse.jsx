@@ -64,11 +64,11 @@ export default function ViewCourse() {
 
   return (
     <>
-      <div className="relative flex min-h-[calc(100vh-3.5rem)] ">
+      <div className="relative flex min-h-[calc(100vh-3.5rem)] bg-blue-800">
         {/* view course side bar */}
         {courseViewSidebar && <VideoDetailsSidebar setReviewModal={setReviewModal} />}
 
-        <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto mt-14">
+        <div className="h-[calc(100vh-3.5rem)] flex-1 overflow-auto mt-14 bg-blue-800">
           <div className="mx-6">
             <Outlet />
           </div>

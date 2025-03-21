@@ -5,13 +5,13 @@ export const NavbarLinks = [
   },
   {
     title: "Catalog",   
-  },
-  {
-    title: "About Us",
-    path: "/about",
-  },
-  {
-    title: "Contact Us",
-    path: "/contact",
-  },
+  }
+  // {
+  //   title: "About Us",
+  //   path: "/about",
+  // },
+  // {
+  //   title: "Contact Us",
+  //   path: "/contact",
+  // },
 ];

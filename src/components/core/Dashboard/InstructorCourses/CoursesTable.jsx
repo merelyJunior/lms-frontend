@@ -71,16 +71,16 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
         {/* heading */}
         <Thead>
           <Tr className="flex gap-x-10 rounded-t-3xl border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
+            <Th className="flex-1 text-left text-sm font-medium uppercase ">
               Courses
             </Th>
-            {/* <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            {/* <Th className="text-left text-sm font-medium uppercase ">
               Duration
             </Th> */}
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase ">
               Price
             </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+            <Th className="text-left text-sm font-medium uppercase ">
               Actions
             </Th>
           </Tr>
@@ -98,7 +98,7 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
         <Tbody>
           {!loading && courses?.length === 0 ? (
             <Tr>
-              <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
+              <Td className="py-10 text-center text-2xl font-medium ">
                 No courses found
               </Td>
             </Tr>
@@ -114,12 +114,12 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
                     <Img
                       src={course?.thumbnail}
                       alt={course?.courseName}
-                      className="h-[148px] min-w-[270px] max-w-[270px] rounded-lg object-cover"
+                      className="h-[100px] min-w-[170px] max-w-[170px] rounded-lg object-cover"
                     />
 
                     <div className="flex flex-col">
-                      <p className="text-lg font-semibold text-richblack-5 capitalize">{course.courseName}</p>
-                      <p className="text-xs text-richblack-300 ">
+                      <p className="text-lg font-semibold text-white capitalize">{course.courseName}</p>
+                      <p className="text-xs  ">
                         {course.courseDescription.split(" ").length > TRUNCATE_LENGTH
                           ? course.courseDescription
                             .split(" ")
@@ -129,24 +129,24 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
                       </p>
 
                       {/* created At */}
-                      <p className="text-[12px] text-richblack-100 mt-4">
+                      <p className="text-[12px]  mt-4">
                         Created: {formatDate(course?.createdAt)}
                       </p>
 
                       {/* updated At */}
-                      <p className="text-[12px] text-richblack-100 ">
+                      <p className="text-[12px]  ">
                         updated: {formatDate(course?.updatedAt)}
                       </p>
 
                       {/* course status */}
                       {course.status === COURSE_STATUS.DRAFT ? (
-                        <p className="mt-2 flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
+                        <p className="mt-2 flex w-fit flex-row items-center gap-2 rounded-full  px-2 py-[2px] text-[12px] font-medium text-pink-100">
                           <HiClock size={14} />
                           Drafted
                         </p>)
                         :
-                        (<div className="mt-2 flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
-                          <p className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
+                        (<div className="mt-2 flex w-fit flex-row items-center gap-2 rounded-full  px-2 py-[2px] text-[12px] font-medium text-yellow-100">
+                          <p className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 ">
                             <FaCheck size={8} />
                           </p>
                           Published
@@ -156,10 +156,10 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
                   </Td>
 
                   {/* course duration */}
-                  {/* <Td className="text-sm font-medium text-richblack-100">2hr 30min</Td> */}
-                  <Td className="text-sm font-medium text-richblack-100">{course.price} $$$</Td>
+                  {/* <Td className="text-sm font-medium ">2hr 30min</Td> */}
+                  <Td className="text-sm font-medium ">{course.price} $</Td>
 
-                  <Td className="text-sm font-medium text-richblack-100 ">
+                  <Td className="text-sm font-medium  ">
                     {/* Edit button */}
                     <button
                       disabled={loading}

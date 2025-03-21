@@ -80,31 +80,25 @@ function App() {
 
 
   return (
-    <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
+    <div className="w-screen min-h-screen  flex flex-col font-inter bg-blue-800">
       <Navbar />
-
       {/* go upward arrow */}
       <button onClick={() => window.scrollTo(0, 0)}
-        className={`bg-yellow-25 hover:bg-yellow-50 hover:scale-110 p-3 text-lg text-black rounded-2xl fixed right-3 z-10 duration-500 ease-in-out ${showArrow ? 'bottom-6' : '-bottom-24'} `} >
+        className={`bg-yellow-25 hover:bg-yellow-300 text-black hover:scale-110 p-3 text-lg text-white rounded-2xl fixed right-3 z-10 duration-500 ease-in-out ${showArrow ? 'bottom-6' : '-bottom-24'} `} >
         <HiArrowNarrowUp />
       </button>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/"  
+          element={
+            <OpenRoute>
+              <Login />
+            </OpenRoute>
+          } />
         <Route path="catalog/:catalogName" element={<Catalog />} />
         <Route path="courses/:courseId" element={<CourseDetails />} />
 
         {/* Open Route - for Only Non Logged in User */}
-        <Route
-          path="signup" element={
-            <OpenRoute>
-              <Signup />
-            </OpenRoute>
-          }
-        />
-
         <Route
           path="login" element={
             <OpenRoute>
@@ -112,7 +106,13 @@ function App() {
             </OpenRoute>
           }
         />
-
+        <Route
+          path="signup" element={
+            <OpenRoute>
+              <Signup />
+            </OpenRoute>
+          }
+        />
         <Route
           path="forgot-password" element={
             <OpenRoute>
@@ -120,7 +120,6 @@ function App() {
             </OpenRoute>
           }
         />
-
         <Route
           path="verify-email" element={
             <OpenRoute>
@@ -128,7 +127,6 @@ function App() {
             </OpenRoute>
           }
         />
-
         <Route
           path="update-password/:id" element={
             <OpenRoute>
@@ -136,7 +134,6 @@ function App() {
             </OpenRoute>
           }
         />
-
 
 
 
