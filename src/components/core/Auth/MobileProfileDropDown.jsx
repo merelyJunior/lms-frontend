@@ -85,7 +85,7 @@ export default function MobileProfileDropDown() {
             {open && (
                 <div
                     onClick={(e) => e.stopPropagation()}
-                    className="absolute min-w-[120px] top-[118%] right-0 z-[1000] divide-y-[1px] divide-richblack-700 overflow-hidden rounded-lg  "
+                    className="absolute min-w-[120px] top-[118%] right-0 z-[1000] divide-y-[1px] bg-blue-600 overflow-hidden rounded-lg  "
                     ref={ref}
                 >
                     <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
@@ -94,7 +94,14 @@ export default function MobileProfileDropDown() {
                             Dashboard
                         </div>
                     </Link>
-
+                    
+                    <Link to='/' onClick={() => setOpen(false)}>
+                        <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm ">
+                            <PiNotebook className="text-lg" />
+                            Catalog
+                        </div>
+                    </Link>
+{/* 
 
                     <Link to='/' onClick={() => setOpen(false)}>
                         <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm  border-y border-gray ">
@@ -103,12 +110,6 @@ export default function MobileProfileDropDown() {
                         </div>
                     </Link>
 
-                    <Link to='/' onClick={() => setOpen(false)}>
-                        <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm ">
-                            <PiNotebook className="text-lg" />
-                            Catalog
-                        </div>
-                    </Link>
 
                     <Link to='/about' onClick={() => setOpen(false)}>
                         <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm  border-y border-gray ">
@@ -122,7 +123,7 @@ export default function MobileProfileDropDown() {
                             <MdOutlineContactPhone className="text-lg" />
                             Contact Us
                         </div>
-                    </Link>
+                    </Link> */}
 
                     <div
                         onClick={() => {

@@ -8,7 +8,7 @@ export default function Cart() {
 
   return (
     <>
-      <h1 className="mb-14 text-3xl font-medium text-white font-wadik text-center sm:text-left">Cart</h1>
+      <h1 className="mb-14 text-xl sm:text-3xl  font-medium text-white font-wadik text-center sm:text-left">Cart</h1>
       <p className="border-b border-b-richblack-400 pb-2 font-semibold ">
         {totalItems} Courses in Cart
       </p>
@@ -18,7 +18,7 @@ export default function Cart() {
           <RenderTotalAmount />
         </div>
       ) : (
-        <p className="mt-14 text-center text-3xl ">
+        <p className="mt-14 text-center text-xl sm:text-3xl  ">
           Your cart is empty
         </p>
       )}

@@ -99,86 +99,83 @@ export default function Instructor() {
       )
         :
         courses.length > 0 ? (
-          <div>
-            <div className="my-4 flex h-[450px] space-x-4">
-              {/* Render chart / graph */}
-              {totalAmount > 0 || totalStudents > 0 ? (
-                <InstructorChart courses={instructorData} />
-              ) : (
-                <div className="flex-1 rounded-md  p-6 bg-blue-500">
-                  <p className="text-lg font-bold text-white">Visualize</p>
-                  <p className="mt-4 text-xl font-medium text-white0">
-                    Not Enough Data To Visualize
-                  </p>
-                </div>
-              )}
+          <>
+  <div className="my-4 flex sm:flex-row flex-col-reverse flex-wrap">
+    {/* Render chart / graph */}
+    {totalAmount > 0 || totalStudents > 0 ? (
+      <InstructorChart courses={instructorData} />
+    ) : (
+      <div className="flex-1 rounded-md p-6 bg-blue-500">
+        <p className="text-lg font-bold text-white">Visualize</p>
+        <p className="mt-4 text-xl font-medium text-white">
+          Not Enough Data To Visualize
+        </p>
+      </div>
+    )}
+    {/* Total Statistics */}
+    <div className="flex min-w-[250px] flex-col rounded-md p-6 border-2 border-gray mb-5 sm:ml-5">
+      <p className="font-wadik text-lg font-bold text-white">Statistics</p>
+      <div className="mt-4 space-y-4">
+        <div>
+          <p className="text-lg">Total Courses:</p>
+          <p className="text-3xl font-semibold text-white">
+            {courses.length}
+          </p>
+        </div>
+        <div>
+          <p className="text-lg">Total Students:</p>
+          <p className="text-3xl font-semibold text-white">
+            {totalStudents}
+          </p>
+        </div>
+        <div>
+          <p className="text-lg">Total Income:</p>
+          <p className="text-3xl font-semibold text-white">
+            {totalAmount} $
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-              {/* left column */}
-              {/* Total Statistics */}
-              <div className="flex min-w-[250px] flex-col rounded-md  p-6 border-2 border-gray">
-                <p className="font-wadik text-lg font-bold text-white">Statistics</p>
-                <div className="mt-4 space-y-4">
-                  <div>
-                    <p className="text-lg ">Total Courses:</p>
-                    <p className="text-3xl font-semibold text-white0">
-                      {courses.length}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-lg ">Total Students:</p>
-                    <p className="text-3xl font-semibold text-white0">
-                      {totalStudents}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-lg ">Total Income:</p>
-                    <p className="text-3xl font-semibold text-white0">
-                      {totalAmount} $
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+  {/* Render 3 courses */}
+  <div className="rounded-md p-6 bg-blue-500">
+    <div className="flex items-center justify-between">
+      <p className="font-wadik font-bold text-white">Your Courses</p>
+      <Link to="/dashboard/my-courses">
+        <p className="text-xs font-semibold text-yellow-50 hover:underline">
+          View All
+        </p>
+      </Link>
+    </div>
 
-            {/* Render 3 courses */}
-            <div className="rounded-md  p-6 bg-blue-500">
-              <div className="flex items-center justify-between">
-                <p className="font-wadik font-bold text-white">Your Courses</p>
-                <Link to="/dashboard/my-courses">
-                  <p className="text-xs font-semibold text-yellow-50 hover:underline">View All</p>
-                </Link>
-              </div>
+    <div className="my-4 flex flex-col sm:flex-row sm:space-x-6 space-y-6 sm:space-y-0">
+      {courses.slice(0, 3).map((course) => (
+        <div key={course._id} className="sm:w-1/3 flex flex-col items-start">
+          <img
+            src={course.thumbnail}
+            alt={course.courseName}
+            className="h-[125px] w-full rounded-2xl object-cover"
+          />
 
-              <div className="my-4 flex flex-col sm:flex-row sm:space-x-6 space-y-6 sm:space-y-0 ">
-                {courses.slice(0, 3).map((course) => (
-                  <div key={course._id} className="sm:w-1/3 flex flex-col items-start ">
-                    <Img
-                      src={course.thumbnail}
-                      alt={course.courseName}
-                      className="h-[125px] w-full rounded-2xl object-cover"
-                    />
-
-                    <div className="mt-3 w-full">
-                      <p className="text-sm font-medium text-white0">
-                        {course.courseName}
-                      </p>
-                      <div className="mt-1 flex items-center space-x-2">
-                        <p className="text-xs font-medium ">
-                          {course.studentsEnrolled.length} students
-                        </p>
-                        <p className="text-xs font-medium ">
-                          |
-                        </p>
-                        <p className="text-xs font-medium ">
-                          {course.price} $
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div className="mt-3 w-full">
+            <p className="text-sm font-medium text-white">
+              {course.courseName}
+            </p>
+            <div className="mt-1 flex items-center space-x-2">
+              <p className="text-xs font-medium">
+                {course.studentsEnrolled.length} students
+              </p>
+              <p className="text-xs font-medium">|</p>
+              <p className="text-xs font-medium">{course.price} $</p>
             </div>
           </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</>
+
         ) : (
           <div className="mt-20 rounded-md  p-6 py-20">
             <p className="text-center text-2xl font-bold text-white">

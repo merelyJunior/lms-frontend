@@ -21,17 +21,17 @@ export default function MyProfile() {
 
   return (
     <>
-      <h1 className="mb-14 text-4xl font-medium text-white font-wadik text-center sm:text-left"> My Profile</h1>
+      <h1 className="mb-14 text-xl sm:text-4xl font-medium text-white font-wadik text-center sm:text-left"> My Profile</h1>
 
-      <div className="flex items-center justify-between rounded-2xl   p-8 px-3 sm:px-12 bg-blue-500">
-        <div className="flex items-center gap-x-4">
+      <div className="flex sm:items-center items-start justify-between rounded-2xl   p-8 px-7 sm:px-12 bg-blue-500">
+        <div className="flex sm:items-center items-start gap-x-4 sm:flex-row flex-col">
           <Img
             src={user?.image}
             alt={`profile-${user?.firstName}`}
-            className="aspect-square w-[68px] rounded-full object-cover"
+            className="aspect-square w-[68px] rounded-full object-cover sm:mb-0 mb-3"
           />
           <div className="space-y-1">
-            <p className="text-lg font-semibold text-white capitalize">
+            <p className="text-sm sm:text-lg font-semibold text-white capitalize">
               {user?.firstName + " " + user?.lastName}
             </p>
             <p className="text-sm ">{user?.email}</p>
@@ -48,10 +48,19 @@ export default function MyProfile() {
         </IconBtn>
       </div>
 
-      <div className="my-10 flex flex-col gap-y-10 rounded-2xl   p-8 px-7 sm:px-12 bg-blue-500">
-        <div className="flex w-full items-center justify-between">
+      <div className="my-10 flex justify-between sm:items-center items-start gap-y-10 rounded-2xl   p-8 px-7 sm:px-12 bg-blue-500">
+        <div className="w-full">
           <p className="text-lg font-semibold text-white">About</p>
-          <IconBtn
+          <p
+            className={`${user?.additionalDetails?.about
+              ? "text-white"
+              : ""
+              } text-sm font-medium font-thin italic`}
+          >
+            {user?.additionalDetails?.about ?? "Write Something About Yourself"}
+          </p>
+        </div>
+        <IconBtn
             text="Edit"
             onclick={() => {
               navigate("/dashboard/settings")
@@ -59,16 +68,7 @@ export default function MyProfile() {
           >
             <RiEditBoxLine />
           </IconBtn>
-        </div>
-
-        <p
-          className={`${user?.additionalDetails?.about
-            ? "text-white"
-            : ""
-            } text-sm font-medium font-thin italic`}
-        >
-          {user?.additionalDetails?.about ?? "Write Something About Yourself"}
-        </p>
+       
       </div>
 
       <div className="my-10 flex flex-col gap-y-10 rounded-2xl   p-8 px-7 sm:px-12 bg-blue-500">
@@ -103,7 +103,7 @@ export default function MyProfile() {
             </div>
             <div>
               <p className="mb-2 text-sm text-gray font-thin">Email</p>
-              <p className="text-sm font-semibold text-white">
+              <p className="text-sm font-semibold text-white  break-words break-all mr-5">
                 {user?.email}
               </p>
             </div>

@@ -58,7 +58,7 @@ const CreateCategory = () => {
 
   return (
     <div className=" rounded-2xl  p-8 px-7 sm:px-12">
-      <h1 className="mb-14 text-4xl font-medium text-white font-wadik text-center sm:text-left">Create Category</h1>
+      <h1 className="mb-14 text-xl sm:text-4xl font-medium text-white font-wadik text-center sm:text-left">Create Category</h1>
 
       <div className='flex flex-col sm:flex-row gap-5 items-center '>
         <div className="flex flex-col w-full gap-5">

@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { VscAdd } from "react-icons/vsc";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Table, Tbody, Td, Th, Thead, Tr } from "react-super-responsive-table";
 
 import { getAllInstructorDetails } from "../../../services/operations/adminApi";
 
-import IconBtn from "../../common/IconBtn";
 
 
 
@@ -58,26 +55,15 @@ function AllInstructors() {
   return (
     <div>
       <div className="mb-14 flex items-center justify-between text-white">
-        <h1 className="text-4xl font-medium text-white font-wadik text-center sm:text-left">All Instructors Details</h1>
-{/* 
-        <IconBtn text="Add Instructor" onclick={() => navigate("")}>
-          <VscAdd />
-        </IconBtn> */}
+        <h1 className="sm:text-4xl text-xl font-medium text-white font-wadik text-center sm:text-left">All Instructors Details</h1>
       </div>
-
-      <Table className="rounded-xl  ">
-        <Thead>
-          <Tr className="flex gap-x-10 rounded-t-md  px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase ">
+      <div className="rounded-xl">
+        <div className="flex gap-x-10 rounded-t-md px-6 py-2 border-b border-gray">
+            <div className="flex-1 text-left text-sm font-medium uppercase">
               Instructors : {instructorsCount}
-            </Th>
-
-            <Th className=" ml-4 text-sm font-medium uppercase ">
-              Status
-            </Th>
-          </Tr>
-        </Thead>
-        <Tbody>
+            </div>
+        </div>
+        <div>
           {
             loading ? <>
               <LoadingSkeleton />
@@ -91,56 +77,50 @@ function AllInstructors() {
                 allInstructorDetails?.map((instructor) => (
                   <div
                     key={instructor._id}
-                    className='border border-gray '
-                  >
-                    <Tr className="flex gap-x-10 px-6 pt-8 pb-2 border-b border-gray">
-                      <Td className="flex flex-1 gap-x-2">
+                    className="border-x border border-gray">
+                    <div className="flex sm:flex-row flex-col sm:items-start items-end flex-col gap-x-10 px-6 pt-8 pb-2 border-b border-gray">
+                      <div className="flex flex-1 gap-x-2 ml-0 mr-auto">
                         <img
                           src={instructor.image}
                           alt="student"
-                          className="h-[75px] w-[75px] rounded-full mr-10"
+                          className="sm:h-[75px] sm:w-[75px] rounded-full sm:mr-10 mr-5 h-[50px] :w-[50px]"
                         />
-                        <div className="flex flex-col justify-between">
-                          <p className="text-lg font-semibold text-white">
-                            <div className='text-sm font-normal'>
-                              <p className='text-base font-bold capitalize'>{instructor.firstName + " " + instructor.lastName}</p>
-                              <p className="italic mb-5">{instructor.email}</p>
-
-                              <p>
-                                Gender:{" "}
-                                {instructor.additionalDetails.gender
-                                  ? instructor.additionalDetails.gender
-                                  : "Not define"}
-                              </p>
-                              <p>
-                                Mobile No:{" "}
-                                {instructor.additionalDetails.contactNumber
-                                  ? instructor.additionalDetails.contactNumber
-                                  : "No Data"}
-                              </p>
-                              <p>
-                                DOB:{" "}
-                                {instructor.additionalDetails.dateOfBirth
-                                  ? instructor.additionalDetails.dateOfBirth
-                                  : "No Data"}
-                              </p>
-                            </div>
+                        <div className='text-sm font-normal'>
+                          <p className='text-base font-bold'>{instructor.firstName + " " + instructor.lastName}</p>
+                          <p className="italic mb-5">{instructor.email}</p>
+                          <p>
+                            Gender:{" "}
+                            {instructor.additionalDetails.gender
+                              ? instructor.additionalDetails.gender
+                              : "Not define"}
+                          </p>
+                          <p>
+                            Mobile No:{" "}
+                            {instructor.additionalDetails.contactNumber
+                              ? instructor.additionalDetails.contactNumber
+                              : "No Data"}
+                          </p>
+                          <p>
+                            DOB:{" "}
+                            {instructor.additionalDetails.dateOfBirth
+                              ? instructor.additionalDetails.dateOfBirth
+                              : "No Data"}
                           </p>
                         </div>
-                      </Td>
-                      <Td className="mr-[11.5%] text-sm font-medium ">
+                      </div>
+                      <div className="sm:mr-[11.5%] mr-0 text-sm font-medium">
                         {instructor.active ? "Active" : "Inactive"}
-                      </Td>
-                      <Td className="mr-[8%] text-sm font-medium ">
+                      </div>
+                      <div className="mr-0 sm:mr-[8%] text-sm font-medium">
                         {instructor.approved ? "Approved" : "Not Approved"}
-                      </Td>
-                    </Tr>
+                      </div>
+                    </div>
 
 
                     {instructor.courses.length ? (
-                      <Tr className="flex gap-x-10 px-6 py-5">
-                        <p className="text-yellow-50 ">Built Courses</p>
-                        <div className='grid grid-cols-5 gap-y-5'>
+                      <div className="flex sm:flex-row flex-col gap-x-10 px-6 py-5">
+                       <p className="text-yellow-50 text-sm font-bold mr-8">Built Courses:</p>
+                        <div className="sm:grid grid-cols-5 gap-y-5 flex sm:flex-row flex-col">
                           {instructor.courses.map((course) => (
                             <div className="text-white text-sm" key={course._id}>
                               <p>{course.courseName}</p>
@@ -148,15 +128,15 @@ function AllInstructors() {
                             </div>
                           ))}
                         </div>
-                      </Tr>)
+                      </div>)
                       :
                       <div className="px-6 my-4 text-sm text-gray">Not Purchased any course</div>
                     }
                   </div>
 
                 ))}
-        </Tbody>
-      </Table>
+          </div>
+      </div>
     </div>
   );
 }

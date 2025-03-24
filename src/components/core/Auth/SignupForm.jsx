@@ -2,14 +2,16 @@ import { useState } from "react"
 import { toast } from "react-hot-toast"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, matchPath, Link } from "react-router-dom"
 
 import { sendOtp } from "../../../services/operations/authAPI"
 import { setSignupData } from "../../../slices/authSlice"
 import { ACCOUNT_TYPE } from "../../../utils/constants"
 import Tab from "../../common/Tab"
 
-
+ const matchRoute = (route) => {
+        return matchPath({ path: route }, location.pathname);
+    }
 
 function SignupForm() {
   const navigate = useNavigate();
@@ -219,6 +221,13 @@ function SignupForm() {
         >
           Create Account
         </button>
+         <Link to="/login">
+              <button className={` px-[12px] py-[8px]  rounded-md  w-full mb-20
+                ${matchRoute('/login') ? 'border-[2.5px] border-yellow-50' : 'border border-richblack-700 '} `}
+              >
+                Log in
+              </button>
+          </Link>
       </form>
     </div>
   )

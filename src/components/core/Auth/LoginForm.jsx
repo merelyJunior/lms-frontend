@@ -1,9 +1,13 @@
 import { useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, matchPath } from "react-router-dom"
 
 import { login } from "../../../services/operations/authAPI"
+
+  const matchRoute = (route) => {
+        return matchPath({ path: route }, location.pathname);
+    }
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -92,6 +96,15 @@ function LoginForm() {
       >
         Sign In
       </button>
+      <Link to="/signup">
+          {/* <button className='border border-richblack-700  px-[12px] py-[8px]  rounded-md'> */}
+          <button className={` px-[12px] py-[8px]  rounded-md w-full mb-20
+            ${matchRoute('/signup') ? 'border-[2.5px] border-yellow-50' : 'border border-richblack-700 '} `}
+          >
+            Create Account
+          </button>
+      </Link>
+     
     </form>
   )
 }

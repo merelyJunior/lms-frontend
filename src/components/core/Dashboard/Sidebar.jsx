@@ -61,9 +61,11 @@ export default function Sidebar() {
     )
   }
 
+  console.log(openSideMenu);
+  
   return (
     <>
-      <div className="sm:hidden text-white absolute left-7 top-3 cursor-pointer " onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
+      <div className="sm:hidden text-white absolute  left-5 top-[-45px] cursor-pointer z-20" onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
         {
           openSideMenu ? <IoMdClose size={33} /> : <HiMenuAlt1 size={33} />
         }
@@ -72,46 +74,48 @@ export default function Sidebar() {
 
       {
         openSideMenu &&
-        <div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-gray bg-blue-600  py-10 ">
-          <div className="flex flex-col mt-6">
-            {sidebarLinks.map((link) => {
-              if (link.type && user?.accountType !== link.type) return null
-              return (
-                <SidebarLink key={link.id} link={link} iconName={link.icon} setOpenSideMenu={setOpenSideMenu} />
-              )
-            })}
-          </div>
+        <div className={`sm:relative fixed top-0 left-0 bottom-0 z-10 sm:z-0 h-screen w-[240px] transition-all duration-300
+          ${openSideMenu ? 'translate-x-0' : '-translate-x-full'} bg-blue-600 py-10 border-r border-gray`}
+        >
 
-          <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 " />
-
-          <div className="flex flex-col">
-            <SidebarLink
-              link={{ name: "Settings", path: "/dashboard/settings" }}
-              iconName={"VscSettingsGear"}
-              setOpenSideMen={setOpenSideMenu}
-            />
-
-            <button
-              onClick={() =>
-                setConfirmationModal({
-                  text1: "Are you sure ?",
-                  text2: "You will be logged out of your account.",
-                  btn1Text: "Logout",
-                  btn2Text: "Cancel",
-                  btn1Handler: () => dispatch(logout(navigate)),
-                  btn2Handler: () => setConfirmationModal(null),
-                })
-              }
-              className=" "
-            >
-              <div className="flex items-center gap-x-2 px-8 py-2 text-sm font-medium  hover:opacity-70 text-white relative ">
-                <VscSignOut className="text-lg" />
-                <span>Logout</span>
-              </div>
-            </button>
-
-          </div>
+        <div className="flex flex-col mt-6">
+          {sidebarLinks.map((link) => {
+            if (link.type && user?.accountType !== link.type) return null
+            return (
+              <SidebarLink key={link.id} link={link} iconName={link.icon} setOpenSideMenu={setOpenSideMenu} />
+            )
+          })}
         </div>
+      
+        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12" />
+      
+        <div className="flex flex-col">
+          <SidebarLink
+            link={{ name: "Settings", path: "/dashboard/settings" }}
+            iconName={"VscSettingsGear"}
+            setOpenSideMenu={setOpenSideMenu}
+          />
+      
+          <button
+            onClick={() =>
+              setConfirmationModal({
+                text1: "Are you sure ?",
+                text2: "You will be logged out of your account.",
+                btn1Text: "Logout",
+                btn2Text: "Cancel",
+                btn1Handler: () => dispatch(logout(navigate)),
+                btn2Handler: () => setConfirmationModal(null),
+              })
+            }
+            className=" "
+          >
+            <div className="flex items-center gap-x-2 px-8 py-2 text-sm font-medium hover:opacity-70 text-white relative">
+              <VscSignOut className="text-lg" />
+              <span>Logout</span>
+            </div>
+          </button>
+        </div>
+      </div>
       }
 
 

@@ -1,8 +1,6 @@
 
 import { useDispatch, useSelector } from "react-redux"
 
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 
 import { useState } from "react"
 import { FaCheck } from "react-icons/fa"
@@ -33,7 +31,7 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
   // delete course
   const handleCourseDelete = async (courseId) => {
     setLoading(true)
-    const toastId = toast.loading('Deleting...');
+    const toastId = toast.loading('Deleting...')
     await deleteCourse({ courseId: courseId }, token)
     const result = await fetchInstructorCourses(token)
     if (result) {
@@ -42,16 +40,14 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
     setConfirmationModal(null)
     setLoading(false)
     toast.dismiss(toastId)
-    // console.log("All Course ", courses)
   }
-
 
   // Loading Skeleton
   const skItem = () => {
     return (
       <div className="flex border-b border-richblack-800 px-6 py-8 w-full">
-        <div className="flex flex-1 gap-x-4 ">
-          <div className='h-[148px] min-w-[300px] rounded-xl skeleton '></div>
+        <div className="flex flex-1 gap-x-4">
+          <div className='h-[148px] min-w-[300px] rounded-xl skeleton'></div>
 
           <div className="flex flex-col w-[40%]">
             <p className="h-5 w-[50%] rounded-xl skeleton"></p>
@@ -67,103 +63,84 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
 
   return (
     <>
-      <Table className="rounded-2xl border border-richblack-800 ">
-        {/* heading */}
-        <Thead>
-          <Tr className="flex gap-x-10 rounded-t-3xl border-b border-b-richblack-800 px-6 py-2">
-            <Th className="flex-1 text-left text-sm font-medium uppercase ">
-              Courses
-            </Th>
-            {/* <Th className="text-left text-sm font-medium uppercase ">
-              Duration
-            </Th> */}
-            <Th className="text-left text-sm font-medium uppercase ">
-              Price
-            </Th>
-            <Th className="text-left text-sm font-medium uppercase ">
-              Actions
-            </Th>
-          </Tr>
-        </Thead>
-
+      <div className=" border border-richblack-800">
 
         {/* loading Skeleton */}
-        {loading && <div >
-          {skItem()}
-          {skItem()}
-          {skItem()}
-        </div>
-        }
+        {loading && (
+          <div>
+            {skItem()}
+            {skItem()}
+            {skItem()}
+          </div>
+        )}
 
-        <Tbody>
+        <div>
           {!loading && courses?.length === 0 ? (
-            <Tr>
-              <Td className="py-10 text-center text-2xl font-medium ">
-                No courses found
-              </Td>
-            </Tr>
-          )
-            : (
-              courses?.map((course) => (
-                <Tr
-                  key={course._id}
-                  className="flex gap-x-10 border-b border-richblack-800 px-6 py-8"
-                >
-                  <Td className="flex flex-1 gap-x-4 relative">
-                    {/* course Thumbnail */}
-                    <Img
-                      src={course?.thumbnail}
-                      alt={course?.courseName}
-                      className="h-[100px] min-w-[170px] max-w-[170px] rounded-lg object-cover"
-                    />
+            <div className="py-10 text-center text-2xl font-medium">
+              No courses found
+            </div>
+          ) : (
+            courses?.map((course) => (
+              <div
+                key={course._id}
+                className="flex gap-x-10 border-b border-richblack-800 px-6 py-8 sm:flex-row flex-col"
+              >
+                <div className="flex flex-1 gap-x-4 relative sm:flex-row flex-col">
+                  {/* course Thumbnail */}
+                  <Img
+                    src={course?.thumbnail}
+                    alt={course?.courseName}
+                    className="h-[100px] min-w-[170px] max-w-[170px]  object-cover"
+                  />
 
-                    <div className="flex flex-col">
-                      <p className="text-lg font-semibold text-white capitalize">{course.courseName}</p>
-                      <p className="text-xs  ">
-                        {course.courseDescription.split(" ").length > TRUNCATE_LENGTH
-                          ? course.courseDescription
-                            .split(" ")
-                            .slice(0, TRUNCATE_LENGTH)
-                            .join(" ") + "..."
-                          : course.courseDescription}
+                  <div className="flex flex-col">
+                    <p className="text-lg font-semibold text-white capitalize">
+                      {course.courseName}
+                    </p>
+                    <p className="text-xs sm:mt-0 mt-2 italic">
+                      {course.courseDescription.split(" ").length > TRUNCATE_LENGTH
+                        ? course.courseDescription
+                          .split(" ")
+                          .slice(0, TRUNCATE_LENGTH)
+                          .join(" ") + "..."
+                        : course.courseDescription}
+                    </p>
+
+                    {/* created At */}
+                    <p className="text-[12px] mt-4">
+                      Created: {formatDate(course?.createdAt)}
+                    </p>
+
+                    {/* updated At */}
+                    <p className="text-[12px]">
+                      updated: {formatDate(course?.updatedAt)}
+                    </p>
+
+                    {/* course status */}
+                    {course.status === COURSE_STATUS.DRAFT ? (
+                      <p className="mt-2 flex w-fit flex-row items-center gap-2 rounded-full px-2 py-[2px] text-[12px] font-medium text-pink-100">
+                        <HiClock size={14} />
+                        Drafted
                       </p>
-
-                      {/* created At */}
-                      <p className="text-[12px]  mt-4">
-                        Created: {formatDate(course?.createdAt)}
-                      </p>
-
-                      {/* updated At */}
-                      <p className="text-[12px]  ">
-                        updated: {formatDate(course?.updatedAt)}
-                      </p>
-
-                      {/* course status */}
-                      {course.status === COURSE_STATUS.DRAFT ? (
-                        <p className="mt-2 flex w-fit flex-row items-center gap-2 rounded-full  px-2 py-[2px] text-[12px] font-medium text-pink-100">
-                          <HiClock size={14} />
-                          Drafted
-                        </p>)
-                        :
-                        (<div className="mt-2 flex w-fit flex-row items-center gap-2 rounded-full  px-2 py-[2px] text-[12px] font-medium text-yellow-100">
-                          <p className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 ">
-                            <FaCheck size={8} />
-                          </p>
-                          Published
-                        </div>
-                        )}
-                    </div>
-                  </Td>
-
-                  {/* course duration */}
-                  {/* <Td className="text-sm font-medium ">2hr 30min</Td> */}
-                  <Td className="text-sm font-medium ">{course.price} $</Td>
-
-                  <Td className="text-sm font-medium  ">
+                    ) : (
+                      <div className="mt-2 flex w-fit flex-row items-center gap-2 rounded-full sm:px-2 py-[2px] px-0 text-[12px] font-medium text-yellow-100">
+                        <p className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100">
+                          <FaCheck size={8} />
+                        </p>
+                        Published
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="flex  mr-0 ml-auto w-[100%] sm:w-auto justify-between mt-5 sm:mt-0">
+                  <div className="text-sm font-medium mr-10">{course.price} $</div>
+                  <div className="text-sm font-medium">
                     {/* Edit button */}
                     <button
                       disabled={loading}
-                      onClick={() => { navigate(`/dashboard/edit-course/${course._id}`) }}
+                      onClick={() => {
+                        navigate(`/dashboard/edit-course/${course._id}`)
+                      }}
                       title="Edit"
                       className="px-2 transition-all duration-200 hover:scale-110 hover:text-caribbeangreen-300"
                     >
@@ -176,17 +153,11 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
                       onClick={() => {
                         setConfirmationModal({
                           text1: "Do you want to delete this course?",
-                          text2:
-                            "All the data related to this course will be deleted",
+                          text2: "All the data related to this course will be deleted",
                           btn1Text: !loading ? "Delete" : "Loading...  ",
                           btn2Text: "Cancel",
-                          btn1Handler: !loading
-                            ? () => handleCourseDelete(course._id)
-                            : () => { },
-                          btn2Handler: !loading
-                            ? () => setConfirmationModal(null)
-                            : () => { },
-
+                          btn1Handler: !loading ? () => handleCourseDelete(course._id) : () => {},
+                          btn2Handler: !loading ? () => setConfirmationModal(null) : () => {},
                         })
                       }}
                       title="Delete"
@@ -194,15 +165,18 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
                     >
                       <RiDeleteBin6Line size={20} />
                     </button>
-                  </Td>
-                </Tr>
-              ))
-            )}
-        </Tbody>
-      </Table>
+                  </div>
+                </div>
+                
+              </div>
+            ))
+          )}
+        </div>
+      </div>
 
       {/* Confirmation Modal */}
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </>
   )
 }
+

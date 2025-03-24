@@ -84,21 +84,21 @@ const Navbar = () => {
 
 
     return (
-        <nav className={`z-[10] flex h-14 w-full items-center justify-center border-b-[1px] border-b-gray text-white translate-y-0 transition-all ${showNavbar} `}>
+        <nav className={`z-10 flex h-14 w-full items-center justify-center border-b-[1px] border-b-gray text-white translate-y-0 transition-all ${showNavbar} `}>
              {/* <nav className={` fixed flex items-center justify-center w-full h-16 z-[10] translate-y-0 transition-all text-white ${showNavbar}`}> */}
-            <div className='flex w-11/12 max-w-maxContent items-center justify-between '>
+            <div className={`${token === null && 'justify-between' } flex w-11/12 max-w-maxContent items-center justify-end sm:justify-between`}>
                 {/* logo */}
-                <Link to="/">
+                <Link to="/" className="">
                     <img src={studyNotionLogo} width={75} height={42} loading='lazy' />
                 </Link>
         
                 {/* Nav Links - visible for only large devices*/}
-                <ul className='hidden sm:flex gap-x-6 '>
+                <ul className=' sm:flex gap-x-6 '>
                     {
                         NavbarLinks.map((link, index) => (
                             <li key={index}>
                                 {
-                                    link.title === "Catalog" ? (
+                                    link.title === "Course catalog" ? (
                                         <div
                                             className={`group relative flex cursor-pointer items-center gap-1 ${matchRoute("/catalog/:catalogName")
                                                 ? "bg-yellow-25 text-black rounded-xl p-1 px-3"
@@ -151,7 +151,7 @@ const Navbar = () => {
 
 
                 {/* Login/SignUp/Dashboard */}
-                <div className='flex gap-x-4 items-center'>
+                <div className={`${token === null && 'hidden' } flex gap-x-4 items-center`}>
                     {
                         user && user?.accountType === "Student" && (
                             <Link to="/dashboard/cart" className="relative">
@@ -164,29 +164,7 @@ const Navbar = () => {
                             </Link>
                         )
                     }
-                    {
-                        token === null && (
-                            <Link to="/login">
-                                <button className={` px-[12px] py-[8px]  rounded-md 
-                                 ${matchRoute('/login') ? 'border-[2.5px] border-yellow-50' : 'border border-richblack-700 '} `}
-                                >
-                                    Log in
-                                </button>
-                            </Link>
-                        )
-                    }
-                    {
-                        token === null && (
-                            <Link to="/signup">
-                                {/* <button className='border border-richblack-700  px-[12px] py-[8px]  rounded-md'> */}
-                                <button className={` px-[12px] py-[8px]  rounded-md 
-                                 ${matchRoute('/signup') ? 'border-[2.5px] border-yellow-50' : 'border border-richblack-700 '} `}
-                                >
-                                    Sign Up
-                                </button>
-                            </Link>
-                        )
-                    }
+                    
 
                     {/* for large devices */}
                     {token !== null && <ProfileDropDown />}

@@ -27,7 +27,7 @@ export default function DeleteAccount() {
         <div className="flex flex-col ">
           <h2 className="text-lg font-semibold text-white "> Delete Account</h2>
 
-          <div className="sm:w-3/5 text-pink-25 flex flex-col gap-3 mt-1">
+          <div className="sm:w-3/5 text-pink-25 flex flex-col gap-3 mt-1 sm:text-lg text-sm">
             <p>Would you like to delete account ?</p>
             <p>
               This account may contain Paid Courses. Deleting your account is
@@ -46,7 +46,7 @@ export default function DeleteAccount() {
 
             <button
               type="button"
-              className="w-fit italic text-pink-300  "
+              className="w-fit italic text-pink-300 underline "
               onClick={() => check &&
                 setConfirmationModal({
                   text1: "Are you sure ?",
@@ -58,7 +58,7 @@ export default function DeleteAccount() {
                 })
               }
             >
-              I want to delete my account.
+              I want to delete my account( select and confirm )
             </button>
           </div>
 

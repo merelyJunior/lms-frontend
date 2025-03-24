@@ -61,15 +61,15 @@ export default function EnrolledCourses() {
 
   return (
     <>
-      <div className="text-4xl text-white font-wadik text-center sm:text-left">Enrolled Courses</div>
+      <div className="text-xl text-white font-wadik text-center sm:text-left sm:text-4xl">Enrolled Courses</div>
       {
         <div className="my-8 text-white">
           {/* Headings */}
-          <div className="flex rounded-t-2xl  ">
+          {/* <div className="flex rounded-t-2xl  ">
             <p className="w-[45%] px-5 py-3">Course Name</p>
             <p className="w-1/4 px-2 py-3">Duration</p>
             <p className="flex-1 px-2 py-3">Progress</p>
-          </div>
+          </div> */}
 
 
           {/* loading Skeleton */}
@@ -114,29 +114,30 @@ export default function EnrolledCourses() {
 
                 {/* only for smaller devices */}
                 {/* duration -  progress */}
-                <div className='sm:hidden'>
-                  <div className=" px-2 py-3">{course?.totalDuration}</div>
+                <div className='sm:hidden sm:text-lg text-sm'>
+                  <div className=" px-5 py-3">Duration: {course?.totalDuration}</div>
 
-                  <div className="flex sm:w-2/5 flex-col gap-2 px-2 py-3">
+                  <div className="flex sm:w-2/5 flex-col gap-2 px-5 py-3">
                     {/* {console.log('Course ============== ', course.progressPercentage)} */}
 
-                    <p>Progress: {course.progressPercentage || 0}%</p>
+                    <p className="italic">Progress: {course.progressPercentage || 0}%</p>
                     <ProgressBar
                       completed={course.progressPercentage || 0}
-                      height="8px"
+                      height="3px"
                       isLabelVisible={false}
+                      bgColor="#08f8ff"
                     />
                   </div>
                 </div>
 
                 {/* only for larger devices */}
                 {/* duration -  progress */}
-                <div className="hidden w-1/5 sm:flex px-2 py-3">{course?.totalDuration}</div>
-                <div className="hidden sm:flex w-1/5 flex-col gap-2 px-2 py-3">
-                  <p>Progress: {course.progressPercentage || 0}%</p>
+                <div className="hidden w-1/5 sm:flex ">Duration: {course?.totalDuration}</div>
+                <div className="hidden sm:flex w-1/5 flex-col gap-2 px-2 py-3 ">
+                  <p className="italic">Progress: {course.progressPercentage || 0}%</p>
                   <ProgressBar
                     completed={course.progressPercentage || 0}
-                    height="8px"
+                    height="5px"
                     isLabelVisible={false}
                     bgColor="#08f8ff"
                   />
