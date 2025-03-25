@@ -86,7 +86,7 @@ const Navbar = () => {
     return (
         <nav className={`z-10 flex h-14 w-full items-center justify-center border-b-[1px] border-b-gray text-white translate-y-0 transition-all ${showNavbar} `}>
              {/* <nav className={` fixed flex items-center justify-center w-full h-16 z-[10] translate-y-0 transition-all text-white ${showNavbar}`}> */}
-            <div className={`${token === null && 'justify-between' } flex w-11/12 max-w-maxContent items-center justify-end sm:justify-between`}>
+            <div className={`${token === null && 'justify-between' } flex w-11/12 max-w-maxContent items-center justify-end md:justify-between`}>
                 {/* logo */}
                 <Link to="/" className="">
                     <img src={studyNotionLogo} width={75} height={42} loading='lazy' />
@@ -100,7 +100,7 @@ const Navbar = () => {
                                 {
                                     link.title === "Course catalog" ? (
                                         <div
-                                            className={`group relative flex cursor-pointer items-center gap-1 ${matchRoute("/catalog/:catalogName")
+                                            className={`sm:ml-20 md:mr-10 md:ml-30 ml-0 mr-0 group relative flex cursor-pointer items-center gap-1 ${matchRoute("/catalog/:catalogName")
                                                 ? "bg-yellow-25 text-black rounded-xl p-1 px-3"
                                                 : " rounded-xl p-1 px-3 "
                                                 }`}

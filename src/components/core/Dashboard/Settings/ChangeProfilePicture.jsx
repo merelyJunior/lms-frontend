@@ -69,7 +69,7 @@ export default function ChangeProfilePicture() {
           <Img
             src={previewSource || user?.image}
             alt={`profile-${user?.firstName}`}
-            className="aspect-square w-[68px] rounded-full object-cover"
+            className="aspect-square w-[68px] rounded-full object-cover z-10 relative"
           />
 
           <div className="space-y-2">

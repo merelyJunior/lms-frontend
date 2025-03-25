@@ -28,7 +28,7 @@ export default function MyProfile() {
           <Img
             src={user?.image}
             alt={`profile-${user?.firstName}`}
-            className="aspect-square w-[68px] rounded-full object-cover sm:mb-0 mb-3"
+            className="aspect-square w-[68px] rounded-full object-cover sm:mb-0 mb-3 z-10 relative"
           />
           <div className="space-y-1">
             <p className="text-sm sm:text-lg font-semibold text-white capitalize">

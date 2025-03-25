@@ -65,7 +65,7 @@ export default function Sidebar() {
   
   return (
     <>
-      <div className="sm:hidden text-white absolute  left-5 top-[-45px] cursor-pointer z-20" onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
+      <div className="md:hidden text-white absolute  left-5 top-[-45px] cursor-pointer z-20" onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
         {
           openSideMenu ? <IoMdClose size={33} /> : <HiMenuAlt1 size={33} />
         }
@@ -74,7 +74,7 @@ export default function Sidebar() {
 
       {
         openSideMenu &&
-        <div className={`sm:relative fixed top-0 left-0 bottom-0 z-10 sm:z-0 h-screen w-[240px] transition-all duration-300
+        <div className={`md:relative fixed top-0 left-0 bottom-0 z-10 md:z-0 h-screen w-[240px] transition-all duration-300
           ${openSideMenu ? 'translate-x-0' : '-translate-x-full'} bg-blue-600 py-10 border-r border-gray`}
         >
 
