@@ -14,6 +14,8 @@ import Course_Card from "./Course_Card"
 
 
 function Course_Slider({ Courses }) {
+  console.log(Courses);
+  
   return (
     <>
       {Courses?.length ? (
@@ -32,7 +34,7 @@ function Course_Slider({ Courses }) {
         >
           {Courses?.map((course, i) => (
             <SwiperSlide key={i}>
-              <Course_Card course={course} Height={"h-[250px]"} />
+              <Course_Card course={course} Height={"h-[125px]"} />
             </SwiperSlide>
           ))}
         </Swiper>

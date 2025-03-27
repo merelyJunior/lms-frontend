@@ -113,24 +113,24 @@ export default function Instructor() {
       </div>
     )}
     {/* Total Statistics */}
-    <div className="flex min-w-[250px] flex-col rounded-md p-6 border-2 border-gray mb-5 sm:ml-5">
+    <div className="flex min-w-[250px] flex-col rounded-md p-6 border-2 border-gray  sm:ml-5">
       <p className="font-wadik text-lg font-bold text-white">Statistics</p>
       <div className="mt-4 space-y-4">
         <div>
-          <p className="text-lg">Total Courses:</p>
-          <p className="text-3xl font-semibold text-white">
+          <p className="text-sm">Total Courses:</p>
+          <p className="text-md font-semibold text-white">
             {courses.length}
           </p>
         </div>
         <div>
-          <p className="text-lg">Total Students:</p>
-          <p className="text-3xl font-semibold text-white">
+          <p className="text-sm">Total Students:</p>
+          <p className="text-md font-semibold text-white">
             {totalStudents}
           </p>
         </div>
         <div>
-          <p className="text-lg">Total Income:</p>
-          <p className="text-3xl font-semibold text-white">
+          <p className="text-sm">Total Income:</p>
+          <p className="text-md font-semibold text-white">
             {totalAmount} $
           </p>
         </div>

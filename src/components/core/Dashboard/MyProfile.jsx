@@ -90,25 +90,25 @@ export default function MyProfile() {
           <div className="flex flex-col gap-y-5">
 
             <div>
-              <p className="mb-2 text-sm text-gray font-thin">First Name</p>
-              <p className="text-sm font-semibold text-white capitalize">
+              <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">First Name:</p>
+              <p className="text-sm text-white capitalize">
                 {user?.firstName}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm text-gray font-thin">Account Type</p>
-              <p className="text-sm font-semibold text-white capitalize">
+              <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Account Type:</p>
+              <p className="text-sm text-white capitalize">
                 {user?.accountType}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm text-gray font-thin">Email</p>
+              <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Email:</p>
               <p className="text-sm font-semibold text-white  break-words break-all mr-5">
                 {user?.email}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm text-gray font-thin">Gender</p>
+              <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Gender:</p>
               <p className="text-sm font-semibold text-white">
                 {user?.additionalDetails?.gender ?? "Add Gender"}
               </p>
@@ -117,19 +117,19 @@ export default function MyProfile() {
 
           <div className="flex flex-col gap-y-5">
             <div>
-              <p className="mb-2 text-sm text-gray font-thin">Last Name</p>
-              <p className="text-sm font-semibold text-white capitalize">
+              <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Last Name:</p>
+              <p className="text-sm text-white capitalize">
                 {user?.lastName}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm text-gray font-thin">Phone Number</p>
+              <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Phone Number:</p>
               <p className="text-sm font-semibold text-white">
                 {user?.additionalDetails?.contactNumber ?? "Add Contact Number"}
               </p>
             </div>
             <div>
-              <p className="mb-2 text-sm text-gray font-thin">Date Of Birth</p>
+              <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Date Of Birth:</p>
               <p className="text-sm font-semibold text-white">
                 {formattedDate(user?.additionalDetails?.dateOfBirth) ?? "Add Date Of Birth"}
               </p>

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import { BiInfoCircle } from "react-icons/bi"
 import { HiOutlineGlobeAlt } from "react-icons/hi"
+import { FaShareSquare } from "react-icons/fa"
 // import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
@@ -19,7 +20,7 @@ import GetAvgRating from "../utils/avgRating"
 import { ACCOUNT_TYPE } from './../utils/constants';
 import { addToCart } from "../slices/cartSlice"
 
-import { GiReturnArrow } from 'react-icons/gi'
+import { IoChevronBack    } from 'react-icons/io5'
 import { MdOutlineVerified } from 'react-icons/md'
 import Img from './../components/common/Img';
 import toast from "react-hot-toast"
@@ -110,7 +111,7 @@ function CourseDetails() {
         <p className="h-4 w-[35%] lg:w-[10%] rounded-xl skeleton"></p>
 
         {/* Floating Courses Card */}
-        <div className="right-[1.5rem] top-[20%] hidden lg:block lg:absolute min-h-[450px] w-1/3 max-w-[410px] 
+        <div className="right-[1.5rem] top-[20%] hidden lg:block lg:absolute min-h-[575px] w-1/3 max-w-[410px] 
             translate-y-24 md:translate-y-0 rounded-xl skeleton">
         </div>
 
@@ -173,22 +174,26 @@ function CourseDetails() {
     })
   }
 
-
+  const handleShare = () => {
+    copy(window.location.href)
+    toast.success("Link copied to clipboard")
+  }
 
   return (
     <>
-      <div className={`relative w-full `}>
+      <div className={`relative w-full mt-[50px] `}>
         {/* Hero Section */}
-        <div className="mx-auto box-content px-4 lg:w-[1260px] 2xl:relative ">
-          <div className="mx-auto grid min-h-[450px] max-w-maxContentTab justify-items-cente py-8 lg:mx-0 lg:justify-items-start lg:py-0 xl:max-w-[810px]">
+        <div className="flex flex-col lg:flex-row md:gap-6mx-auto px-4 3xl:relative w-full flex-1 min-w-0">
+          <div className="grid min-h-[575px] justify-items-center  lg:mx-0 lg:justify-items-start   mr-[10px]  w-[100%] lg:w-[63%] mt-[60px] bg-blue-600 rounded-2xl p-1  md:px-8 px-4 py-4 md:py-8 ">
 
             {/* Go back button */}
-            <div className="mb-5 lg:mt-10 lg:mb-0 z-[100]  " onClick={() => navigate(-1)}>
-              <GiReturnArrow className="w-10 h-10 text-yellow-100 hover:text-yellow-25 cursor-pointer" />
+            <div className="mb-5 lg:mb-0 mr-0 ml-auto flex items-center cursor-pointer" onClick={() => navigate(-1)}>
+              <IoChevronBack    className="w-7 h-7 text-yellow-100 hover:text-yellow-25 " />
+              <p className="underline md:text-md text-sm">Back to courses</p>
             </div>
 
             {/* will appear only for small size */}
-            <div className="relative block max-h-[30rem] lg:hidden">
+            <div className="relative block  lg:hidden">
               <Img
                 src={thumbnail}
                 alt="course thumbnail"
@@ -196,37 +201,123 @@ function CourseDetails() {
               />
               <div className="absolute bottom-0 left-0 h-full w-full shadow-[#161D29_0px_-64px_36px_-28px_inset]"></div>
             </div>
-
+           
+           
             {/* Course data */}
-            <div className={`mb-5 flex flex-col justify-center gap-4 py-5 text-lg text-white`}>
-              <p className="text-4xl font-bold text-white sm:text-[42px]">{courseName}</p>
-              <p className=''>{courseDescription}</p>
-              <div className="text-md flex flex-wrap items-center gap-2">
-                <span className="text-yellow-25">{avgReviewCount}</span>
-                <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
-                <span>{`(${ratingAndReviews.length} reviews)`}</span>
-                <span>{`${studentsEnrolled.length} students enrolled`}</span>
+            <div className={`flex flex-col justify-center gap-3 md:gap-5 pb-5 text-lg text-white w-full`}>
+              
+              
+              <div className="flex justify-between items-center mb-5 mt-3 md:mt-5">
+               <div className="flex flex-wrap items-center">
+                <RatingStars Review_Count={avgReviewCount} Star_Size={24} className='mr-0 ml-auto'/>
+                <span className="text-[12px] md:text-sm text-gray ml-0 md:ml-5">{`(${ratingAndReviews.length} reviews)`}</span>
+               </div>
+               
+                <div className="text-[12px] md:text-sm text-gray flex flex-wrap items-center gap-2">
+                  <span>{`${studentsEnrolled.length} students enrolled`}</span>
+                </div>
               </div>
-              <p className="capitalize "> Created By <span className="font-semibold underline">{instructor.firstName} {instructor.lastName}</span></p>
-              <div className="flex flex-wrap gap-5 text-lg">
-                <p className="flex items-center gap-2">
-                  {" "}
-                  <BiInfoCircle /> Created at {formatDate(createdAt)}
-                </p>
-                <p className="flex items-center gap-2">{" "} <HiOutlineGlobeAlt /> English</p>
+              <p className="font-wadik text-[19px] md:text-[24px]  font-bold text-white ">{courseName}</p>
+              <div className="flex gap-2 text-sm text-yellow-100">
+                  <span>
+                    {courseContent.length} {`section(s)`}
+                  </span>
+                  <span>
+                    {totalNoOfLectures} {`lecture(s)`}
+                  </span>
+                  <span>{response.data?.totalDuration} Total Time</span>
+                </div>
+              <p className='text-sm max-w-[500px] font-thin'>{courseDescription}</p>
+             
+            </div>
+            <div className=" mb-5 border-y border-gray w-[100%] flex flex-col justify-center py-2">
+              <p className="font-wadik text-md">What you'll learn ?</p>
+              {whatYouWillLearn && (
+                whatYouWillLearn.split('\n').map((line, index) => (
+                  <div key={index} className="flex items-center mx-1 my-2">
+                    <p className="text-sm  font-thin">{index + 1}.</p>
+                    <p className="ml-2 text-sm  font-thin">{line}</p>
+                  </div>
+                ))
+              )}
+            </div>
+            <div className="flex flex-col-reverse w-[100%] md:flex-col">
+              <div className="mt-5 md:mt-0">
+                <p className="text-xs font-wadik">Tags:</p>
+                <div className="flex items-center my-2">
+                  {
+                    tag && tag.map((item, ind) => (
+                      <p key={ind} className="bg-yellow-100 text-black px-[7px] py-[3px] rounded-lg text-center mr-2 text-xs" >
+                        {item}
+                      </p>
+                    ))
+                  }
+                </div>
+              </div>
+              <div className="flex justify-between items-start  flex-col-reverse md:flex-row-reverse  mb-7 md:mb-0 mt-0 md:mt-7">
+                <div className="flex flex-wrap gap-5 text-sm   mb-9 md:mb-0">
+                    <p className="flex items-center gap-2 text-[12px]">
+                      {" "}
+                      <BiInfoCircle /> Created at {formatDate(createdAt)}
+                    </p>
+                    <p className="flex items-center gap-2 text-[12px]">{" "} <HiOutlineGlobeAlt /> English</p>
+                </div>
+                <div className="font-thin my-2 md:my-0">
+                  <div className="flex items-center gap-4 ">
+                    <Img
+                      src={instructor.image}
+                      alt="Author"
+                      className="h-7 w-7 rounded-full object-cover"
+                    />
+                    <div className="">
+                      <p className="text-[12px] capitalize flex items-center gap-2 font-semibold">{`${instructor.firstName} ${instructor.lastName}`}
+                        <span><MdOutlineVerified className='w-5 h-5 text-[#00BFFF]' /></span>
+                      </p>
+                      <p className="text-white  text-[11px]">{instructor?.additionalDetails?.about}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* will appear only for small size */}
-            <div className="flex w-full flex-col gap-4 border-y border-y-richblack-500 py-4 lg:hidden">
-              <p className="space-x-3 pb-4 text-3xl font-semibold text-white">{price} $</p>
-              <button className="yellowButton" onClick={handleBuyCourse}>Buy Now</button>
-              <button onClick={handleAddToCart} className="blackButton">Add to Cart</button>
-            </div>
+            
+            
+           <div className={` lg:hidden w-full flex flex-col gap-1 bg-blue-800 rounded-2xl px-3 ${user?.accountType === ACCOUNT_TYPE.STUDENT && 'pt-5'} mt-7`}>
+                       {
+                         user?.accountType === ACCOUNT_TYPE.STUDENT && (
+                         <button
+                         className="yellowButton outline-none"
+                         onClick={
+                           user && response?.data?.courseDetails?.studentsEnrolled.includes(user?._id)
+                             ? () => navigate("/dashboard/enrolled-courses")
+                             : handleBuyCourse
+                         }
+                       >
+                         {user && response?.data?.courseDetails?.studentsEnrolled.includes(user?._id)
+                           ? "Go To Course"
+                           : "Buy Now"}
+                       </button>
+                         )
+                       }
+                       
+                       <div id="paypal-button-container"></div>
+                       {(!user || !response?.data?.courseDetails?.studentsEnrolled.includes(user?._id) && user?.accountType === ACCOUNT_TYPE.STUDENT) && (
+                         <button onClick={handleAddToCart} className="bg-blue-700 p-3 rounded-md outline-none">
+                           Add to Cart
+                         </button>
+                        )}
+                       <div className="text-center">
+                         <button
+                           className="mx-auto flex items-center py-2 text-yellow-100 mb-2"
+                           onClick={handleShare}
+                         >
+                           <FaShareSquare size={15} /> Share
+                         </button>
+                       </div>
+                     </div>
           </div>
 
           {/* Floating Courses Card */}
-          <div className="right-[1.5rem] top-[60px] mx-auto hidden lg:block lg:absolute min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0">
+          <div className="right-[1.5rem]  top-[60px] mx-auto hidden lg:block lg:absolute min-h-[600px] w-1/3 max-w-[410px] mt-4 md:mt-0">
             <CourseDetailsCard
               course={response?.data?.courseDetails}
               setConfirmationModal={setConfirmationModal}
@@ -236,58 +327,18 @@ function CourseDetails() {
         </div>
       </div>
 
-      <div className="mx-auto box-content px-4 text-start text-white lg:w-[1260px]">
-        <div className="mx-auto max-w-maxContentTab lg:mx-0 xl:max-w-[810px]">
-          {/* What will you learn section */}
-          <div className="my-8 border border-richblack-600 p-8">
-            <p className="text-3xl font-semibold">What you'll learn</p>
-            <div className="mt-3">
-              {whatYouWillLearn && (
-                whatYouWillLearn.split('\n').map((line, index) => (
-                  <div key={index} className="flex items-center mb-2">
-                    <p className="font-bold">{index + 1}.</p>
-                    <p className="ml-2">{line}</p>
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
-
-          {/* Tags */}
-          <div className="flex flex-col lg:flex-row gap-4">
-            <p className="text-xl font-bold">Tags</p>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {
-                tag && tag.map((item, ind) => (
-                  <p key={ind} className="bg-yellow-50 text-black p-[2px] text-white rounded-full text-center font-semibold" >
-                    {item}
-                  </p>
-                ))
-              }
-            </div>
-          </div>
-
+      <div className="mx-auto  px-4 text-start text-white lg:w-[1260px] w-[100%]">
+        <div className="mx-auto max-w-maxContentTab lg:mx-0">
           {/* Course Content Section */}
-          <div className="max-w-[830px] mt-9">
-            <div className="flex flex-col gap-3">
-              <p className="text-[28px] font-semibold">Course Content</p>
-              <div className="flex flex-wrap justify-between gap-2">
-                <div className="flex gap-2">
-                  <span>
-                    {courseContent.length} {`section(s)`}
-                  </span>
-                  <span>
-                    {totalNoOfLectures} {`lecture(s)`}
-                  </span>
-                  <span>{response.data?.totalDuration} Total Time</span>
-                </div>
-                <button
-                  className="text-yellow-25"
+          <div className="md:max-w-[830px] mt-5 md:mt-9 p-0 md:p-8 mb-[100px] md:px-0">
+            <div className="flex justify-between gap-3 items-center">
+              <p className="font-wadik">Course Content</p>
+              <button
+                  className="text-gray text-[12px] md:text-sm"
                   onClick={() => setIsActive([])}
                 >
                   Collapse All Sections
                 </button>
-              </div>
             </div>
 
             {/* Course Details Accordion - section Subsection */}
@@ -302,23 +353,7 @@ function CourseDetails() {
               ))}
             </div>
 
-            {/* Author Details */}
-            <div className="mb-12 py-4">
-              <p className="text-[28px] font-semibold">Author</p>
-              <div className="flex items-center gap-4 py-4">
-                <Img
-                  src={instructor.image}
-                  alt="Author"
-                  className="h-14 w-14 rounded-full object-cover"
-                />
-                <div>
-                  <p className="text-lg capitalize flex items-center gap-2 font-semibold">{`${instructor.firstName} ${instructor.lastName}`}
-                    <span><MdOutlineVerified className='w-5 h-5 text-[#00BFFF]' /></span>
-                  </p>
-                  <p className="text-white0">{instructor?.additionalDetails?.about}</p>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>

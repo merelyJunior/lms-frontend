@@ -18,9 +18,9 @@ export default function RenderTotalAmount() {
   }
 
   return (
-    <div className="min-w-[280px] rounded-md   p-6">
+    <div className="min-w-[280px] rounded-md p-6 bg-blue-500  w-full lg:w-[30%]">
       <p className="mb-1 text-sm font-medium ">Total:</p>
-      <p className="mb-6 text-3xl font-medium text-yellow-100">{total} $</p>
+      <p className="mb-6 text-3xl font-wadik text-yellow-100">{total} $</p>
       <IconBtn
         text="Buy Now"
         onclick={handleBuyCourse}

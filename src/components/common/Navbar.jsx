@@ -69,24 +69,34 @@ const Navbar = () => {
 
     // control Navbar
     const controlNavbar = () => {
-        if (window.scrollY > 200) {
-            if (window.scrollY > lastScrollY)
-                setShowNavbar('hide')
+        // if (window.scrollY > 200) {
+        //     if (window.scrollY > lastScrollY)
+        //         setShowNavbar('hide')
 
-            else setShowNavbar('show')
-        }
+        //     else setShowNavbar('show')
+        // }
 
-        else setShowNavbar('top')
+        // else setShowNavbar('top')
 
         setLastScrollY(window.scrollY);
     }
 
+    const [isCatalog, setisCatalog] = useState(false);
+
+    useEffect(() => {
+        if (location.pathname.includes("/catalog") || location.pathname.includes("/courses")) {
+            setisCatalog(true);
+        }else{
+            setisCatalog(false);
+        }
+      }, []);
+    
 
 
     return (
-        <nav className={`z-10 flex h-14 w-full items-center justify-center border-b-[1px] border-b-gray text-white translate-y-0 transition-all ${showNavbar} `}>
-             {/* <nav className={` fixed flex items-center justify-center w-full h-16 z-[10] translate-y-0 transition-all text-white ${showNavbar}`}> */}
-            <div className={`${token === null && 'justify-between' } flex w-11/12 max-w-maxContent items-center justify-end md:justify-between`}>
+        // <nav className={`z-10 flex h-14 w-full items-center justify-center border-b-[1px] border-b-gray text-white translate-y-0 transition-all ${showNavbar} `}>
+             <nav className={` fixed flex items-center justify-center w-full h-16 z-[30] translate-y-0 transition-all text-white ${showNavbar} border-b border-gray`}>
+            <div className={`${token === null && 'justify-between' } flex w-11/12 max-w-maxContent items-center ${!isCatalog ? 'justify-end' : 'justify-between'} md:justify-between `}>
                 {/* logo */}
                 <Link to="/" className="">
                     <img src={studyNotionLogo} width={75} height={42} loading='lazy' />
@@ -100,7 +110,7 @@ const Navbar = () => {
                                 {
                                     link.title === "Course catalog" ? (
                                         <div
-                                            className={`sm:ml-20 md:mr-10 md:ml-30 ml-0 mr-0 group relative flex cursor-pointer items-center gap-1 ${matchRoute("/catalog/:catalogName")
+                                            className={`sm:ml-20 md:mr-10 md:ml-30 ml-0 mr-0 group relative flex cursor-pointer items-center gap-1 text-sm ${matchRoute("/catalog/:catalogName")
                                                 ? "bg-yellow-25 text-black rounded-xl p-1 px-3"
                                                 : " rounded-xl p-1 px-3 "
                                                 }`}
@@ -111,7 +121,7 @@ const Navbar = () => {
                                             <div className="invisible absolute left-[50%] top-[50%] z-[1000] flex w-[200px] translate-x-[-50%] translate-y-[3em] 
                                                     flex-col rounded-lg  p-4  opacity-0 transition-all duration-150 group-hover:visible 
                                                     group-hover:translate-y-[1.85em] group-hover:opacity-100 lg:w-[300px]
-                                                    bg-blue-600 text-white
+                                                    bg-blue-600 text-white shadow-[0_4px_4px_#ffeb3b14] border border-yellow-100
                                                     "
                                             >
                                               
@@ -124,7 +134,7 @@ const Navbar = () => {
                                                                         .split(" ")
                                                                         .join("-")
                                                                         .toLowerCase()}`}
-                                                                    className="rounded-lg bg-transparent py-4 pl-4 hover:0 hover:bg-blue-400 hover:text-black"
+                                                                    className="bg-transparent py-4 pl-4 hover:0 hover:bg-blue-400 hover:text-black text-sm border-b border-gray"
                                                                     key={i}
                                                                 >
                                                                     <p>{subLink.name}</p>
@@ -157,7 +167,7 @@ const Navbar = () => {
                             <Link to="/dashboard/cart" className="relative">
                                 <AiOutlineShoppingCart className="text-[2.35rem] text-white hover: rounded-full p-2 duration-200" />
                                 {totalItems > 0 && (
-                                    <span className="absolute -bottom-2 -right-2 grid h-5 w-5 place-items-center overflow-hidden rounded-full  text-center text-xs font-bold text-yellow-100">
+                                    <span className="absolute top-0 -right-2 grid h-4 w-4 place-items-center overflow-hidden rounded-full  text-center text-[10px] text-black bg-white">
                                         {totalItems}
                                     </span>
                                 )}

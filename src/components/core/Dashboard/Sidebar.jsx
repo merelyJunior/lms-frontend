@@ -60,12 +60,10 @@ export default function Sidebar() {
       </div>
     )
   }
-
-  console.log(openSideMenu);
   
   return (
     <>
-      <div className="md:hidden text-white absolute  left-5 top-[-45px] cursor-pointer z-20" onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
+      <div className="md:hidden text-white absolute  left-5 top-[15px] cursor-pointer z-40" onClick={() => dispatch(setOpenSideMenu(!openSideMenu))}>
         {
           openSideMenu ? <IoMdClose size={33} /> : <HiMenuAlt1 size={33} />
         }
@@ -74,8 +72,9 @@ export default function Sidebar() {
 
       {
         openSideMenu &&
-        <div className={`md:relative fixed top-0 left-0 bottom-0 z-10 md:z-0 h-screen w-[240px] transition-all duration-300
-          ${openSideMenu ? 'translate-x-0' : '-translate-x-full'} bg-blue-600 py-10 border-r border-gray`}
+        <div className={`md:relative fixed top-0 left-0 bottom-0 z-10 md:z-0  w-[240px] transition-all duration-300
+          ${openSideMenu ? 'translate-x-0' : '-translate-x-full'} bg-blue-600 py-10 border-r border-gray mt-[50px]`}
+          style={{ height: 'calc(100vh - 50px)' }}
         >
 
         <div className="flex flex-col mt-6">

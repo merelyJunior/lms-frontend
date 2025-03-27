@@ -71,79 +71,48 @@ function Catalog() {
     }
 
 
-
     return (
         <>
-            {/* Hero Section */}
-            <div className=" box-content  px-4">
-                <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
-                    <p className="text-sm ">
-                        {`Home / Catalog / `}
-                        <span className="text-yellow-25">
-                            {catalogPageData?.selectedCategory?.name}
-                        </span>
-                    </p>
-                    <p className="text-3xl text-white">
+            <div className="px-4 mt-[100px]">
+                <div className="mx-auto flex min-h-[160px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
+                    <p className="text-3xl text-white font-wadik text-2xl text-center">
                         {catalogPageData?.selectedCategory?.name}
                     </p>
-                    <p className="max-w-[870px] ">
+                    <p className="max-w-[870px] text-center mr-auto ml-auto">
                         {catalogPageData?.selectedCategory?.description}
                     </p>
                 </div>
             </div>
-
-            {/* Section 1 */}
-            <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-                <div className="section_heading">Courses to get you started</div>
-                <div className="my-4 flex border-b border-b-richblack-600 text-sm">
-                    <p
-                        className={`px-4 py-2 ${active === 1
-                            ? "border-b border-b-yellow-25 text-yellow-25"
-                            : "text-white0"
-                            } cursor-pointer`}
-                        onClick={() => setActive(1)}
-                    >
-                        Most Populer
-                    </p>
-                    <p
-                        className={`px-4 py-2 ${active === 2
-                            ? "border-b border-b-yellow-25 text-yellow-25"
-                            : "text-white0"
-                            } cursor-pointer`}
-                        onClick={() => setActive(2)}
-                    >
-                        New
-                    </p>
-                </div>
-                <div>
-                    <Course_Slider
-                        Courses={catalogPageData?.selectedCategory?.courses}
-                    />
-                </div>
-            </div>
-
-            {/* Section 2 */}
-            <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-                <div className="section_heading">
-                    Top courses in {catalogPageData?.differentCategory?.name}
-                </div>
-                <div>
-                    <Course_Slider
-                        Courses={catalogPageData?.differentCategory?.courses}
-                    />
-                </div>
-            </div>
-
-            {/* Section 3 */}
-            <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-                <div className="section_heading">Frequently Bought</div>
+            <div className="mx-auto  w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+                <p className="font-wadik text-xl">All courses in this category</p>
                 <div className="py-8">
-                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                        {catalogPageData?.mostSellingCourses
-                            ?.slice(0, 4)
-                            .map((course, i) => (
-                                <Course_Card course={course} key={i} Height={"h-[300px]"} />
-                            ))}
+                    <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+                    {catalogPageData?.selectedCategory?.courses.map((course, i) => (
+                        <Course_Card course={course} key={i} Height="h-[300px]" />
+                    ))}
+                    </div>
+                </div>
+            </div>
+            <div className=" mx-auto  w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+                <div className="font-wadik text-xl">
+                    Top courses in: "{catalogPageData?.differentCategory?.name}" 
+                </div>
+                <div className="py-8">
+                    <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+                    {catalogPageData?.differentCategory?.courses.map((course, i) => (
+                        <Course_Card course={course} key={i} Height="h-[300px]" />
+                    ))}
+                    </div>
+                </div>
+            </div>
+            <div className=" mx-auto  w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+                <div className="font-wadik text-xl">You May Also Like:</div>
+                <div className="py-8">
+                    <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+                    {catalogPageData?.mostSellingCourses
+                            ?.slice(0, 4).map((course, i) => (
+                        <Course_Card course={course} key={i} Height="h-[300px]" />
+                    ))}
                     </div>
                 </div>
             </div>

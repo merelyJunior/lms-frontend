@@ -9,6 +9,7 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   color: #fff;
+  font-family: 'Geologica', sans-serif;
 }
 
 h1,h2,h3,h4,h5{
@@ -94,7 +95,7 @@ h1,h2,h3,h4,h5{
 
 /* Buttons */
 .yellowButton {
-  @apply cursor-pointer rounded-md bg-yellow-50 text-black px-[20px] py-[8px] font-semibold  hover:bg-yellow-300 hover:text-yellow-25 duration-300;
+  @apply cursor-pointer rounded-md bg-yellow-50 text-black px-[20px] py-[8px] font-semibold  hover:bg-yellow-300  duration-300;
 }
 
 .blackButton {

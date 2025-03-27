@@ -53,7 +53,7 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
   return (
     <>
       <div
-        className={`flex flex-col gap-4 rounded-2xl  p-4 text-white `}
+        className={`flex flex-col gap-4 rounded-2xl  p-4 text-white bg-blue-600`}
       >
         {/* Course Image */}
         <Img
@@ -63,11 +63,30 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
         />
 
         <div className="px-4">
-          <div className="space-x-3 pb-4 text-3xl font-semibold">
-            {CurrentPrice} $
+          <div className="font-wadik space-x-3 pb-4 text-3xl font-semibold">
+          {CurrentPrice} $
           </div>
-          <div className="flex flex-col gap-4">
-            <button
+          <div className={``}>
+            <p className={`my-2 text-md text-pink-300 font-semibold underline`}>
+              Course Requirements
+            </p>
+            <div className="flex flex-col gap-3 text-sm">
+              {course?.instructions?.map((item, i) => {
+                return (
+                  <p className={`flex gap-2 items-center`} key={i}>
+                    <BsFillCaretRightFill />
+                    <span>{item}</span>
+                  </p>
+                )
+              })}
+            </div>
+          </div>
+
+          
+          <div className={`flex flex-col gap-1 bg-blue-800 rounded-2xl px-3 ${user?.accountType === ACCOUNT_TYPE.STUDENT && 'pt-5'} mt-7`}>
+            {
+              user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <button
               className="yellowButton outline-none"
               onClick={
                 user && course?.studentsEnrolled.includes(user?._id)
@@ -79,42 +98,26 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
                 ? "Go To Course"
                 : "Buy Now"}
             </button>
+              )
+            }
+            
             <div id="paypal-button-container"></div>
-            {(!user || !course?.studentsEnrolled.includes(user?._id)) && (
-              <button onClick={handleAddToCart} className="blackButton outline-none">
+            {(!user || !course?.studentsEnrolled.includes(user?._id) && user?.accountType === ACCOUNT_TYPE.STUDENT) && (
+              <button onClick={handleAddToCart} className="bg-blue-700 p-3 rounded-md outline-none">
                 Add to Cart
               </button>
-            )}
-          </div>
-
-          <p className="pb-3 pt-6 text-center text-sm ">
-            30-Day Money-Back Guarantee
-          </p>
-
-          <div className={``}>
-            <p className={`my-2 text-xl font-semibold `}>
-              Course Requirements :
-            </p>
-            <div className="flex flex-col gap-3 text-sm text-caribbeangreen-100">
-              {course?.instructions?.map((item, i) => {
-                return (
-                  <p className={`flex gap-2`} key={i}>
-                    <BsFillCaretRightFill />
-                    <span>{item}</span>
-                  </p>
-                )
-              })}
+             )}
+            <div className="text-center">
+              <button
+                className="mx-auto flex items-center py-2 text-yellow-100 mb-2"
+                onClick={handleShare}
+              >
+                <FaShareSquare size={15} /> Share
+              </button>
             </div>
           </div>
 
-          <div className="text-center">
-            <button
-              className="mx-auto flex items-center gap-2 py-6 text-yellow-100 "
-              onClick={handleShare}
-            >
-              <FaShareSquare size={15} /> Share
-            </button>
-          </div>
+         
         </div>
       </div>
     </>

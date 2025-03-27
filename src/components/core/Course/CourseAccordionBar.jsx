@@ -22,7 +22,7 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
 
 
   return (
-    <div className='overflow-hidden border border-solid border-richblack-600  hover: text-white last:mb-0 duration-200 '>
+    <div className='overflow-hidden border border-solid border-gray  hover: text-white last:mb-0 duration-200 '>
       <div>
         <div
           className={`flex cursor-pointer items-start justify-between bg-opacity-20 px-7 py-6 transition-[0.3s]`}
@@ -37,7 +37,7 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
             <p>{course?.sectionName}</p>
           </div>
           <div className="space-x-4">
-            <span className="text-yellow-25">
+            <span className="text-yellow-100 text-sm">
               {`${course.subSection.length || 0} lecture(s)`}
             </span>
           </div>
@@ -49,7 +49,7 @@ export default function CourseAccordionBar({ course, isActive, handleActive }) {
         className={`relative h-0 overflow-hidden  transition-[height] duration-[0.35s] ease-[ease]`}
         style={{ height: sectionHeight, }}
       >
-        <div className="text-textHead flex flex-col gap-2 px-7 py-6 font-semibold">
+        <div className="text-textHead flex flex-col gap-2 px-7 pb-6 font-thin">
           {course?.subSection?.map((subSec, i) => {
             return <CourseSubSectionAccordion subSec={subSec} key={i} />
           })}
