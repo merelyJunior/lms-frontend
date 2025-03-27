@@ -26,6 +26,7 @@ export default function RenderTotalAmount() {
         onclick={handleBuyCourse}
         customClasses="w-full justify-center"
       />
+      <div id="paypal-button-container" className="mt-5"></div>
     </div>
   )
 }

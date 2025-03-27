@@ -94,12 +94,15 @@ function Catalog() {
                 </div>
             </div>
             <div className=" mx-auto  w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-                <div className="font-wadik text-xl">
-                    Top courses in: "{catalogPageData?.differentCategory?.name}" 
-                </div>
+                {catalogPageData?.differentCategory && (
+                    <div className="font-wadik text-xl">
+                        Top 3 courses in: "{catalogPageData?.differentCategory?.name}" 
+                    </div>
+                )}
+              
                 <div className="py-8">
                     <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
-                    {catalogPageData?.differentCategory?.courses.map((course, i) => (
+                    {catalogPageData?.differentCategory?.courses.slice(0, 3).map((course, i) => (
                         <Course_Card course={course} key={i} Height="h-[300px]" />
                     ))}
                     </div>

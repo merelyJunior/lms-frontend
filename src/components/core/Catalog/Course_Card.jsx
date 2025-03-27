@@ -63,13 +63,13 @@ function Course_Card({ course, Height }) {
           <Img
             src={course?.thumbnail}
             alt="course thumbnail"
-            className="rounded-t-xl object-cover h-[100px] w-full"
+            className="rounded-t-xl object-cover h-[150px] w-full"
           />
           <div className="px-5 py-3 flex flex-col h-full">
             <div>
               <p className="font-wadik text-xs text-yellow-100 my-2">{course?.courseName}</p>
               <p className="text-xs font-thin text-blue-400 opacity-30 my-2">{course?.instructor?.firstName}</p>
-              <p className="text-sm line-clamp-3 mb-3">{course?.courseDescription}</p>
+              <p className="text-sm line-clamp-3 mb-3 font-thin">{course?.courseDescription}</p>
             </div>
             <div className="mt-auto mb-0">
               <div className="flex items-center">

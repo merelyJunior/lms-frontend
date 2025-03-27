@@ -44,7 +44,23 @@ function CourseDetails() {
   // Declear a state to save the course details
   const [response, setResponse] = useState(null)
   const [confirmationModal, setConfirmationModal] = useState(null)
+  const [isHidden, setIsHidden] = useState(false);
+  console.log(isHidden );
+  
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {  
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+    };
 
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Убедитесь, что событие срабатывает сразу после загрузки
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   useEffect(() => {
     // Calling fetchCourseDetails fucntion to fetch the details
     const fectchCourseDetailsData = async () => {
@@ -179,6 +195,8 @@ function CourseDetails() {
     toast.success("Link copied to clipboard")
   }
 
+
+
   return (
     <>
       <div className={`relative w-full mt-[50px] `}>
@@ -284,22 +302,27 @@ function CourseDetails() {
            <div className={` lg:hidden w-full flex flex-col gap-1 bg-blue-800 rounded-2xl px-3 ${user?.accountType === ACCOUNT_TYPE.STUDENT && 'pt-5'} mt-7`}>
                        {
                          user?.accountType === ACCOUNT_TYPE.STUDENT && (
-                         <button
-                         className="yellowButton outline-none"
-                         onClick={
-                           user && response?.data?.courseDetails?.studentsEnrolled.includes(user?._id)
-                             ? () => navigate("/dashboard/enrolled-courses")
-                             : handleBuyCourse
-                         }
-                       >
-                         {user && response?.data?.courseDetails?.studentsEnrolled.includes(user?._id)
-                           ? "Go To Course"
-                           : "Buy Now"}
-                       </button>
+                          <>
+                           <button
+                            className="yellowButton outline-none"
+                            onClick={
+                              user && response?.data?.courseDetails?.studentsEnrolled.includes(user?._id)
+                                ? () => navigate("/dashboard/enrolled-courses")
+                                : handleBuyCourse
+                            }
+                          >
+                            {user && response?.data?.courseDetails?.studentsEnrolled.includes(user?._id)
+                              ? "Go To Course"
+                              : "Buy Now"}
+                            </button>
+                            {isHidden && (<div id="paypal-button-container" ></div>)}
+                             
+                          </>
+                        
+                       
                          )
                        }
                        
-                       <div id="paypal-button-container"></div>
                        {(!user || !response?.data?.courseDetails?.studentsEnrolled.includes(user?._id) && user?.accountType === ACCOUNT_TYPE.STUDENT) && (
                          <button onClick={handleAddToCart} className="bg-blue-700 p-3 rounded-md outline-none">
                            Add to Cart
