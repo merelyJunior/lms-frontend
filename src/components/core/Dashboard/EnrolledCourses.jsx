@@ -120,7 +120,7 @@ export default function EnrolledCourses() {
                   <div className="flex sm:w-2/5 flex-col gap-2 px-5 py-3">
                     {/* {console.log('Course ============== ', course.progressPercentage)} */}
 
-                    <p className="italic">Progress: {course.progressPercentage || 0}%</p>
+                    <p className="">Progress: {course.progressPercentage || 0}%</p>
                     <ProgressBar
                       completed={course.progressPercentage || 0}
                       height="3px"
@@ -134,7 +134,7 @@ export default function EnrolledCourses() {
                 {/* duration -  progress */}
                 <div className="hidden w-1/5 sm:flex ">Duration: {course?.totalDuration}</div>
                 <div className="hidden sm:flex w-1/5 flex-col gap-2 px-2 py-3 ">
-                  <p className="italic">Progress: {course.progressPercentage || 0}%</p>
+                  <p className="">Progress: {course.progressPercentage || 0}%</p>
                   <ProgressBar
                     completed={course.progressPercentage || 0}
                     height="5px"

@@ -87,7 +87,7 @@ function AllInstructors() {
                         />
                         <div className='text-sm font-normal'>
                           <p className='text-base font-bold'>{instructor.firstName + " " + instructor.lastName}</p>
-                          <p className="italic mb-5">{instructor.email}</p>
+                          <p className="mb-5">{instructor.email}</p>
                           <p>
                             Gender:{" "}
                             {instructor.additionalDetails.gender

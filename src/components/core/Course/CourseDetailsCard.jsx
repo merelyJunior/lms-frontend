@@ -67,7 +67,7 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
           {CurrentPrice} $
           </div>
           <div className={``}>
-            <p className={`my-2 text-md text-pink-300 font-semibold underline`}>
+            <p className={`my-2 text-md text-yellow-100 font-semibold`}>
               Course Requirements
             </p>
             <div className="flex flex-col gap-3 text-sm">
@@ -109,10 +109,10 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
              )}
             <div className="text-center">
               <button
-                className="mx-auto flex items-center py-2 text-yellow-100 mb-2"
+                className="mx-auto flex items-center py-2 text-yellow-100 mb-2 font-thin text-sm"
                 onClick={handleShare}
               >
-                <FaShareSquare size={15} /> Share
+                <FaShareSquare size={15} /> <span className="ml-1">Share</span>
               </button>
             </div>
           </div>

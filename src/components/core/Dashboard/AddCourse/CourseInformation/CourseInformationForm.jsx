@@ -292,7 +292,7 @@ export default function CourseInformationForm() {
           <button
             onClick={() => dispatch(setStep(2))}
             disabled={loading}
-            className={`flex cursor-pointer items-center gap-x-2 rounded-md py-[8px] px-[20px] font-semibold
+            className={`flex cursor-pointer items-center gap-x-2 rounded-md py-[8px] px-[20px] font-thin text-[13px]
                 hover: hover: duration-300`}
           >
             Continue Wihout Saving

@@ -82,7 +82,7 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
           {/* course Name - total No Of Lectures*/}
           <div className="flex flex-col">
             <p>{courseEntireData?.courseName}</p>
-            <p className="text-sm font-semibold text-white00">
+            <p className="text-sm font-thin text-white00">
               {completedLectures?.length} / {totalNoOfLectures}
             </p>
           </div>

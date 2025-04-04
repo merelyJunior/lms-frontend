@@ -87,7 +87,7 @@ h1,h2,h3,h4,h5{
 }
 
 .form-style {
-  @apply rounded-lg  p-3 text-[16px] leading-[24px] text-black shadow-[0_1px_0_0] shadow-white/30  focus:outline-none placeholder:text-black;
+  @apply rounded-lg  p-3 text-[13px] font-thin leading-[24px] text-black shadow-[0_1px_0_0] shadow-white/30  focus:outline-none placeholder:text-black;
 }
 
 .section_heading {

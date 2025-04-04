@@ -97,7 +97,7 @@ export default function CoursesTable({ courses, setCourses, loading, setLoading 
                     <p className="text-lg font-semibold text-white capitalize">
                       {course.courseName}
                     </p>
-                    <p className="text-xs sm:mt-0 mt-2 italic">
+                    <p className="text-xs sm:mt-0 mt-2 ">
                       {course.courseDescription.split(" ").length > TRUNCATE_LENGTH
                         ? course.courseDescription
                           .split(" ")

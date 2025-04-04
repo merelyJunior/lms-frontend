@@ -85,7 +85,7 @@ const AllStudents = () => {
                             />
                             <div className='text-sm font-normal'>
                                 <p className='text-base font-bold'>{temp.firstName + " " + temp.lastName}</p>
-                                <p className="italic mb-5">{temp.email}</p>
+                                <p className=" mb-5">{temp.email}</p>
                                 <p>
                                     gender:{" "}
                                     {temp.additionalDetails.gender

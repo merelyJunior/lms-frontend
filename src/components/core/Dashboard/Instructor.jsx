@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import { fetchInstructorCourses } from "../../../services/operations/courseDetailsAPI"
 import { getInstructorData } from "../../../services/operations/profileAPI"
@@ -17,7 +18,7 @@ export default function Instructor() {
   const [instructorData, setInstructorData] = useState(null)
   const [courses, setCourses] = useState([])
 
-
+ const navigate = useNavigate()
   // get Instructor Data
   useEffect(() => {
     ; (async () => {
@@ -79,7 +80,7 @@ export default function Instructor() {
     )
   }
 
-
+  
   return (
     <div>
       <div className="space-y-2">
@@ -151,7 +152,11 @@ export default function Instructor() {
 
     <div className="my-4 flex flex-col sm:flex-row sm:space-x-6 space-y-6 sm:space-y-0">
       {courses.slice(0, 3).map((course) => (
-        <div key={course._id} className="sm:w-1/3 flex flex-col items-start">
+        <div key={course._id} className="sm:w-1/3 flex flex-col items-start"
+          onClick={() => {
+            navigate(`/dashboard/edit-course/${course._id}`)
+          }}
+        >
           <img
             src={course.thumbnail}
             alt={course.courseName}

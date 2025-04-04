@@ -27,9 +27,9 @@ export default function DeleteAccount() {
         <div className="flex flex-col ">
           <h2 className="text-lg font-semibold text-white "> Delete Account</h2>
 
-          <div className="sm:w-3/5 text-pink-25 flex flex-col gap-3 mt-1 sm:text-lg text-sm">
+          <div className="sm:w-4/5 text-pink-25 flex flex-col gap-3 mt-1 sm:text-lg text-sm">
             <p>Would you like to delete account ?</p>
-            <p>
+            <p className="text-pink-25 flex flex-col gap-3 mt-1 text-[14px] font-thin">
               This account may contain Paid Courses. Deleting your account is
               permanent and will remove all the contain associated with it.
             </p>
@@ -46,7 +46,7 @@ export default function DeleteAccount() {
 
             <button
               type="button"
-              className="w-fit italic text-pink-300 underline "
+              className="w-fit text-pink-300 underline font-thin"
               onClick={() => check &&
                 setConfirmationModal({
                   text1: "Are you sure ?",

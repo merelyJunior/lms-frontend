@@ -78,7 +78,7 @@ function Catalog() {
                     <p className="text-3xl text-white font-wadik text-2xl text-center">
                         {catalogPageData?.selectedCategory?.name}
                     </p>
-                    <p className="max-w-[870px] text-center mr-auto ml-auto">
+                    <p className="max-w-[870px] text-center mr-auto ml-auto font-thin">
                         {catalogPageData?.selectedCategory?.description}
                     </p>
                 </div>

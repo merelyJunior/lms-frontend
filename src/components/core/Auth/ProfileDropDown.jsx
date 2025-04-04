@@ -40,12 +40,12 @@ export default function ProfileDropdown() {
       {open && (
         <div
           onClick={(e) => e.stopPropagation()}
-          className="absolute top-[120%] right-[-15px] z-[1000] divide-y-[1px] overflow-hidden rounded-md bg-blue-600 border-[1px] border-gray"
+          className="absolute top-[120%] right-[-15px] z-[1000] divide-y-[1px]  divide-gray overflow-hidden rounded-md bg-blue-600 border-[1px] border-gray"
           ref={ref}
         >
           <Link to="/dashboard/my-profile" onClick={() => setOpen(false)}>
             <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm  hover:bg-blue-400 hover:text-black text-white">
-              <VscDashboard className="text-lg" />
+              <VscDashboard className="text-lg"/>
               Dashboard
             </div>
           </Link>

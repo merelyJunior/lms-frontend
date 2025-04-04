@@ -34,7 +34,7 @@ export default function MyProfile() {
             <p className="text-sm sm:text-lg font-semibold text-white capitalize">
               {user?.firstName + " " + user?.lastName}
             </p>
-            <p className="text-sm ">{user?.email}</p>
+            <p className="text-sm font-thin">{user?.email}</p>
           </div>
         </div>
 
@@ -55,7 +55,7 @@ export default function MyProfile() {
             className={`${user?.additionalDetails?.about
               ? "text-white"
               : ""
-              } text-sm font-medium font-thin italic`}
+              } text-sm font-medium font-thin`}
           >
             {user?.additionalDetails?.about ?? "Write Something About Yourself"}
           </p>
@@ -91,25 +91,25 @@ export default function MyProfile() {
 
             <div>
               <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">First Name:</p>
-              <p className="text-sm text-white capitalize">
+              <p className="text-sm text-white capitalize font-thin">
                 {user?.firstName}
               </p>
             </div>
             <div>
               <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Account Type:</p>
-              <p className="text-sm text-white capitalize">
+              <p className="text-sm text-white capitalize font-thin">
                 {user?.accountType}
               </p>
             </div>
             <div>
               <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Email:</p>
-              <p className="text-sm font-semibold text-white  break-words break-all mr-5">
+              <p className="text-sm font-thin text-white  break-words break-all mr-5">
                 {user?.email}
               </p>
             </div>
             <div>
               <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Gender:</p>
-              <p className="text-sm font-semibold text-white">
+              <p className="text-sm font-thin text-white">
                 {user?.additionalDetails?.gender ?? "Add Gender"}
               </p>
             </div>
@@ -118,19 +118,19 @@ export default function MyProfile() {
           <div className="flex flex-col gap-y-5">
             <div>
               <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Last Name:</p>
-              <p className="text-sm text-white capitalize">
+              <p className="text-sm text-white capitalize font-thin">
                 {user?.lastName}
               </p>
             </div>
             <div>
               <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Phone Number:</p>
-              <p className="text-sm font-semibold text-white">
+              <p className="text-sm font-thin text-white">
                 {user?.additionalDetails?.contactNumber ?? "Add Contact Number"}
               </p>
             </div>
             <div>
               <p className="mb-2 text-xs font-thin text-yellow-100 font-bold  ">Date Of Birth:</p>
-              <p className="text-sm font-semibold text-white">
+              <p className="text-sm font-thin text-white">
                 {formattedDate(user?.additionalDetails?.dateOfBirth) ?? "Add Date Of Birth"}
               </p>
             </div>

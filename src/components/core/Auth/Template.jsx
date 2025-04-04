@@ -14,9 +14,9 @@ function Template({ title, description1, description2, image, formType }) {
           <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-white">
             {title}
           </h1>
-          <p className="mt-4 text-[1.125rem] leading-[1.625rem]">
+          <p className="mt-4 text-[1.125rem] leading-[1.625rem] font-thin">
             <span className="">{description1}</span>{" "}
-            <span className="font-edu-sa font-bold italic text-blue-100">
+            <span className="font-edu-sa text-blue-100">
               {description2}
             </span>
           </p>
@@ -27,7 +27,7 @@ function Template({ title, description1, description2, image, formType }) {
           <Img
             src={image}
             alt={formType}
-            className={' min-w-[105%] h-full text-white'}
+            className={'w-[165px] h-[155px] text-white mt-[75px]'}
           />
         </div>
       </div>

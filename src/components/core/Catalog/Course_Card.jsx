@@ -69,14 +69,14 @@ function Course_Card({ course, Height }) {
             <div>
               <p className="font-wadik text-xs text-yellow-100 my-2">{course?.courseName}</p>
               <p className="text-xs font-thin text-blue-400 opacity-30 my-2">{course?.instructor?.firstName}</p>
-              <p className="text-sm line-clamp-3 mb-3 font-thin">{course?.courseDescription}</p>
+              <p className="text-[13px] line-clamp-3 mb-3 font-thin">{course?.courseDescription}</p>
             </div>
             <div className="mt-auto mb-0">
               <div className="flex items-center">
                 <RatingStars Star_Size={15} Review_Count={avgReviewCount} />
                 <span className="text-gray ml-1 text-sm">({ avgReviewCount || 0 })</span>
               </div>
-              <p className="text-sm font-wadik my-2">{course?.price} $</p>
+              <p className="text-[23px] font-wadik my-2 text-right">$ {course?.price}</p>
               <div className="flex items-center justify-between ">
                 <Link className="text-sm underline font-thin flex items-center" to={`/courses/${course._id}`}>
                   <TbListDetails />

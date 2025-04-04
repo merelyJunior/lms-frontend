@@ -73,7 +73,7 @@ export default function ChangeProfilePicture() {
           />
 
           <div className="space-y-2">
-            <p className="font-medium">Change Profile Picture</p>
+            <p className="font-thin">Change Profile Picture</p>
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="file"

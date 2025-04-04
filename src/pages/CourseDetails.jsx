@@ -328,14 +328,14 @@ function CourseDetails() {
                            Add to Cart
                          </button>
                         )}
-                       <div className="text-center">
-                         <button
-                           className="mx-auto flex items-center py-2 text-yellow-100 mb-2"
-                           onClick={handleShare}
-                         >
-                           <FaShareSquare size={15} /> Share
-                         </button>
-                       </div>
+                        <div className="text-center">
+                          <button
+                            className="mx-auto flex items-center py-2 text-yellow-100 mb-2 font-thin text-sm"
+                            onClick={handleShare}
+                          >
+                            <FaShareSquare size={15} /> <span className="ml-1">Share</span>
+                          </button>
+                        </div>
                      </div>
           </div>
 
