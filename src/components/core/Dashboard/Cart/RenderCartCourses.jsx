@@ -46,7 +46,7 @@ export default function RenderCartCourses() {
                 />
               </div>
               <p className="mb-6 text-sm text-yellow-100">
-              $ {course?.price}
+              {course?.price === 0 ? "Free" : `$${course?.price}`}
               </p>
             </div>
             

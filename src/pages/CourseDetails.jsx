@@ -45,7 +45,6 @@ function CourseDetails() {
   const [response, setResponse] = useState(null)
   const [confirmationModal, setConfirmationModal] = useState(null)
   const [isHidden, setIsHidden] = useState(false);
-  console.log(isHidden );
   
   useEffect(() => {
     const handleResize = () => {

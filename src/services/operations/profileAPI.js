@@ -41,8 +41,6 @@ export async function getUserEnrolledCourses(token) {
   try {
     const response = await apiConnector("GET", GET_USER_ENROLLED_COURSES_API, { token }, { Authorization: `Bearer ${token}`, })
 
-    console.log("GET_USER_ENROLLED_COURSES_API API RESPONSE............", response)
-
     if (!response.data.success) {
       throw new Error(response.data.message)
     }

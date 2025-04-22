@@ -170,7 +170,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem]  p-[12px] pr-10 text-white outline-none"
+              className="w-full rounded-[0.5rem]  p-[12px] pr-10 outline-none"
             />
             <span
               onClick={() => setShowPassword((prev) => !prev)}
@@ -199,7 +199,7 @@ function SignupForm() {
               style={{
                 boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
               }}
-              className="w-full rounded-[0.5rem]  p-[12px] pr-10 text-white outline-none"
+              className="w-full rounded-[0.5rem]  p-[12px] pr-10 outline-none"
             />
             <span
               onClick={() => setShowConfirmPassword((prev) => !prev)}

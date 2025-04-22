@@ -49,6 +49,7 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
   }
 
   // console.log("Student already enrolled ", course?.studentsEnroled, user?._id)
+  
 
   return (
     <>
@@ -94,8 +95,10 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
                   : handleBuyCourse
               }
             >
-              {user && course?.studentsEnrolled.includes(user?._id)
-                ? "Go To Course"
+             {user && course?.studentsEnrolled.includes(user?._id)
+              ? "Go To Course"
+              : user && CurrentPrice === 0
+                ? "Join For Free"
                 : "Buy Now"}
             </button>
               )

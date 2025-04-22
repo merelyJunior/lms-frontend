@@ -26,21 +26,14 @@ function loadScript(src) {
 // ================ buyCourse ================ 
 export async function buyCourse(token, coursesId, userDetails, navigate, dispatch) {
     const toastId = toast.loading("Loading...");
-
     try {
-        console.log("Attempting to load PayPal SDK...");
-        // Load PayPal SDK
-        // const res = await loadScript("https://www.paypal.com/sdk/js?client-id=AfgEbhErRQBIRW2BEPiLXiwmcjSdB6WdNZx3OBWGwDpdc_DcAaeGVCosb-RYCtXDROyiPBFBtoEjTbTO&components=buttons");
         const res = await loadScript("https://sandbox.paypal.com/sdk/js?client-id=AfgEbhErRQBIRW2BEPiLXiwmcjSdB6WdNZx3OBWGwDpdc_DcAaeGVCosb-RYCtXDROyiPBFBtoEjTbTO&components=buttons");
-
+        
         if (!res) {
             console.error("PayPal SDK failed to load");
             toast.error("PayPal SDK failed to load");
             return;
         }
-        console.log("PayPal SDK loaded successfully");
-
-        console.log("Initiating order...");
         // Initiate the order
         const orderResponse = await apiConnector("POST", COURSE_PAYMENT_API, { coursesId }, {
             Authorization: `Bearer ${token}`,
@@ -49,42 +42,57 @@ export async function buyCourse(token, coursesId, userDetails, navigate, dispatc
         if (!orderResponse.data.success) {
             throw new Error(orderResponse.data.message);
         }
-        console.log('Ответ от PayPal:', orderResponse.result);
-        const orderData = orderResponse.data.message;
-        const amount = orderResponse.data.amount;  // Извлекаем сумму из ответа
+
+       
         
-        console.log('Amount from server:', amount); // Убедитесь, что сумма передается
+        if (orderResponse.data.amount === 0) {
+            toast.dismiss(toastId);
+            toast.success("Free course — enrolling...");
+            
+            const orderDetails = {
+                id: "FREE_ORDER_ID",
+                status: "COMPLETED",
+            };
 
-        // Проверяем структуру orderData и используем нужные данные
-        if (!orderData || !orderData.id || !orderData.links) {
-            console.error("Invalid order data structure:", orderData);
-            toast.error("Invalid order data received");
+            verifyPayment({ ...orderDetails, coursesId }, token, navigate, dispatch);
             return;
-        }
+        }else {
+            const orderData = orderResponse.data.message;
+            const amount = orderResponse.data.amount;  
 
-        // PayPal button setup
-        window.paypal.Buttons({
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            currency_code: 'USD',  // Можно использовать другую валюту
-                            value: amount // Используем сумму, которую мы передали с сервера
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    // Payment success callback
-                    verifyPayment({ ...details, coursesId }, token, navigate, dispatch);
-                });
-            },
-            onError: function(error) {
-                toast.error("Oops, payment failed");
-                console.log("Payment failed: ", error);
+            if (!orderData || !orderData.id || !orderData.links) {
+                console.error("Invalid order data structure:", orderData);
+                toast.error("Invalid order data received");
+                return;
             }
-        }).render('#paypal-button-container');
+
+            window.paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                currency_code: 'USD', 
+                                value: amount 
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        
+                        verifyPayment({ ...details, coursesId }, token, navigate, dispatch);
+                    });
+                },
+                onError: function(error) {
+                    toast.error("Oops, payment failed");
+                    console.log("Payment failed: ", error);
+                }
+            }).render('#paypal-button-container');
+        }
+        
+
+
+        
         
 
     } catch (error) {
@@ -117,23 +125,15 @@ async function sendPaymentSuccessEmail(response, amount, token) {
 
 // ================ verify payment ================
 async function verifyPayment(bodyData, token, navigate, dispatch) {
-    console.log(bodyData);
     
     const toastId = toast.loading("Verifying Payment....");
     dispatch(setPaymentLoading(true));
 
     try {
-        // Логируем входные данные
-        console.log("Starting payment verification...");
-        console.log("Body data sent for verification:", bodyData);
-        console.log("Authorization token:", token);
 
         const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
             Authorization: `Bearer ${token}`,
         });
-
-        // Логируем ответ от сервера
-        console.log("Payment verification response:", response);
 
         if (!response.data.success) {
             throw new Error(response.data.message);
@@ -144,7 +144,6 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
         dispatch(resetCart());
     }
     catch (error) {
-        // Логируем ошибку
         console.log("PAYMENT VERIFY ERROR....", error);
         toast.error("Could not verify Payment");
     }

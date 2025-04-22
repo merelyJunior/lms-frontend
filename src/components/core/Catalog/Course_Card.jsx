@@ -76,7 +76,7 @@ function Course_Card({ course, Height }) {
                 <RatingStars Star_Size={15} Review_Count={avgReviewCount} />
                 <span className="text-gray ml-1 text-sm">({ avgReviewCount || 0 })</span>
               </div>
-              <p className="text-[23px] font-wadik my-2 text-right">$ {course?.price}</p>
+              <p className="text-[19px] font-wadik my-2 text-right">{course?.price === 0 ? "Free" : `$${course?.price}`}</p>
               <div className="flex items-center justify-between ">
                 <Link className="text-sm underline font-thin flex items-center" to={`/courses/${course._id}`}>
                   <TbListDetails />
